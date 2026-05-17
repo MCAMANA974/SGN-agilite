@@ -325,26 +325,31 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
     </div>
     <div class="caillou-trait" id="t2"></div>
     <div class="caillou locked" id="c3" onclick="scrollTo('etape3')">
-      <div class="caillou-circle">📝</div>
-      <div class="caillou-label">Quiz Processus</div>
+      <div class="caillou-circle">🎬</div>
+      <div class="caillou-label">Vidéo processus</div>
     </div>
     <div class="caillou-trait" id="t3"></div>
     <div class="caillou locked" id="c4" onclick="scrollTo('etape4')">
-      <div class="caillou-circle">📘</div>
-      <div class="caillou-label">Synthèse 2</div>
+      <div class="caillou-circle">📝</div>
+      <div class="caillou-label">Quiz Processus</div>
     </div>
     <div class="caillou-trait" id="t4"></div>
     <div class="caillou locked" id="c5" onclick="scrollTo('etape5')">
-      <div class="caillou-circle">🖥️</div>
-      <div class="caillou-label">Vidéo PGI</div>
+      <div class="caillou-circle">📘</div>
+      <div class="caillou-label">Synthèse 2</div>
     </div>
     <div class="caillou-trait" id="t5"></div>
     <div class="caillou locked" id="c6" onclick="scrollTo('etape6')">
-      <div class="caillou-circle">❓</div>
-      <div class="caillou-label">Quiz PGI</div>
+      <div class="caillou-circle">🖥️</div>
+      <div class="caillou-label">Vidéo PGI</div>
     </div>
     <div class="caillou-trait" id="t6"></div>
     <div class="caillou locked" id="c7" onclick="scrollTo('etape7')">
+      <div class="caillou-circle">❓</div>
+      <div class="caillou-label">Quiz PGI</div>
+    </div>
+    <div class="caillou-trait" id="t7"></div>
+    <div class="caillou locked" id="c8" onclick="scrollTo('etape8')">
       <div class="caillou-circle">🎯</div>
       <div class="caillou-label">QCM final</div>
     </div>
@@ -391,7 +396,7 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
     </div>
   </div>
 
-  <!-- ② SYNTHÈSE PARTIE 1 + VIDÉO PROCESSUS -->
+  <!-- ② SYNTHÈSE PARTIE 1 -->
   <div class="etape-card e2 locked" id="etape2">
     <div class="lock-overlay" id="lock2"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete l'étape ① pour débloquer</div></div>
     <div class="etape-header">
@@ -403,7 +408,7 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
       </div>
     </div>
     <div class="etape-body">
-      <p class="etape-desc">Lis la première partie du cours puis regarde la vidéo associée.</p>
+      <p class="etape-desc">Lis attentivement cette première partie avant de regarder la vidéo.</p>
       <div class="synthese-section">
         <div class="synth-part">
           <button class="synth-toggle" onclick="toggleSynth(this)">
@@ -417,34 +422,46 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
             <p>Avec la révolution numérique, une partie des processus peut être <strong>automatisée</strong> — avec des conséquences ambivalentes sur l'emploi.</p>
           </div>
         </div>
-        <div class="synth-part">
-          <button class="synth-toggle" onclick="toggleSynth(this)">
-            🎬 Vidéo – Les processus de gestion
-            <span class="arr">▶</span>
-          </button>
-          <div class="synth-content">
-            <p style="margin-bottom:.75rem;">Regarde cette vidéo pour mieux comprendre le fonctionnement des processus de gestion.</p>
-            <div style="position:relative;border-radius:12px;overflow:hidden;background:#000;padding-top:56.25%;">
-              <iframe src="https://www.youtube.com/embed/BePzV3Wvme0?start=395&rel=0&modestbranding=1"
-                style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
       </div>
       <div style="margin-top:1rem;text-align:right;">
         <button onclick="validerEtape(2)" style="background:linear-gradient(135deg,#2563EB,#3B82F6);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn2">
-          ✅ J'ai lu et regardé → Passer au quiz
+          ✅ J'ai lu → Regarder la vidéo
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ③ QUIZ PROCESSUS -->
-  <div class="etape-card e4 locked" id="etape3">
-    <div class="lock-overlay" id="lock3"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Lis la partie 1 ② pour débloquer ce quiz</div></div>
+  <!-- ③ VIDÉO PROCESSUS -->
+  <div class="etape-card e3 locked" id="etape3">
+    <div class="lock-overlay" id="lock3"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Lis la synthèse ② pour débloquer</div></div>
     <div class="etape-header">
       <div class="etape-num">③</div>
+      <div class="etape-icon">🎬</div>
+      <div>
+        <div class="etape-title">Vidéo – Les processus de gestion</div>
+        <div class="etape-type">Vidéo · ~14 min · Prends des notes !</div>
+      </div>
+    </div>
+    <div class="etape-body">
+      <p class="etape-desc">Regarde attentivement cette vidéo (~14 min). Un quiz t'attend juste après ! 👀</p>
+      <div style="position:relative;border-radius:12px;overflow:hidden;background:#000;padding-top:56.25%;">
+        <iframe src="https://www.youtube.com/embed/BePzV3Wvme0?start=395&rel=0&modestbranding=1"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div style="margin-top:1rem;text-align:right;">
+        <button onclick="validerEtape(3)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn3">
+          ✅ J'ai regardé → Passer au quiz
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ QUIZ PROCESSUS -->
+  <div class="etape-card e4 locked" id="etape4">
+    <div class="lock-overlay" id="lock4"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Regarde la vidéo ③ pour débloquer ce quiz</div></div>
+    <div class="etape-header">
+      <div class="etape-num">④</div>
       <div class="etape-icon">📝</div>
       <div>
         <div class="etape-title">Quiz – As-tu bien compris les processus ?</div>
@@ -552,7 +569,7 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
           <div class="result-score" id="resultScore2"></div>
           <div class="result-msg" id="resultMsg2"></div>
           <div style="margin-top:1.2rem;">
-            <button onclick="validerEtape(3)" style="background:linear-gradient(135deg,#2563EB,#3B82F6);color:#fff;border:none;padding:.7rem 1.6rem;border-radius:12px;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;margin-top:.5rem;">
+            <button onclick="validerEtape(4)" style="background:linear-gradient(135deg,#2563EB,#3B82F6);color:#fff;border:none;padding:.7rem 1.6rem;border-radius:12px;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;margin-top:.5rem;">
               📘 Passer à la partie 2 de la synthèse →
             </button>
           </div>
@@ -561,11 +578,11 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
     </div>
   </div>
 
-  <!-- ④ SYNTHÈSE PARTIE 2 -->
-  <div class="etape-card e2 locked" id="etape4">
-    <div class="lock-overlay" id="lock4"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete le quiz ③ pour débloquer</div></div>
+  <!-- ⑤ SYNTHÈSE PARTIE 2 -->
+  <div class="etape-card e2 locked" id="etape5">
+    <div class="lock-overlay" id="lock5"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete le quiz ④ pour débloquer</div></div>
     <div class="etape-header">
-      <div class="etape-num">④</div>
+      <div class="etape-num">⑤</div>
       <div class="etape-icon">📘</div>
       <div>
         <div class="etape-title">Synthèse – Partie 2 : Les outils numériques</div>
@@ -598,18 +615,18 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
         </div>
       </div>
       <div style="margin-top:1rem;text-align:right;">
-        <button onclick="validerEtape(4)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn4">
+        <button onclick="validerEtape(5)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn5">
           ✅ J'ai lu → Passer à la vidéo PGI
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ⑤ VIDÉO PGI -->
-  <div class="etape-card e3 locked" id="etape5">
-    <div class="lock-overlay" id="lock5"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete l'étape ④ pour débloquer</div></div>
+  <!-- ⑥ VIDÉO PGI -->
+  <div class="etape-card e3 locked" id="etape6">
+    <div class="lock-overlay" id="lock6"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete l'étape ⑤ pour débloquer</div></div>
     <div class="etape-header">
-      <div class="etape-num">⑤</div>
+      <div class="etape-num">⑥</div>
       <div class="etape-icon">🖥️</div>
       <div>
         <div class="etape-title">Comprendre le PGI en vidéo</div>
@@ -622,18 +639,18 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
         <iframe src="https://www.youtube.com/embed/jtyFZzgZ5Yo" height="340" allowfullscreen></iframe>
       </div>
       <div style="margin-top:1rem;text-align:right;">
-        <button onclick="validerEtape(5)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn5">
+        <button onclick="validerEtape(6)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn6">
           ✅ J'ai regardé → Passer au quiz PGI
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ⑥ QUIZ PGI -->
-  <div class="etape-card e4 locked" id="etape6">
-    <div class="lock-overlay" id="lock6"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Regarde la vidéo ⑤ pour débloquer le quiz</div></div>
+  <!-- ⑦ QUIZ PGI -->
+  <div class="etape-card e4 locked" id="etape7">
+    <div class="lock-overlay" id="lock7"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Regarde la vidéo ⑥ pour débloquer le quiz</div></div>
     <div class="etape-header">
-      <div class="etape-num">⑥</div>
+      <div class="etape-num">⑦</div>
       <div class="etape-icon">❓</div>
       <div>
         <div class="etape-title">Quiz – As-tu bien compris le PGI ?</div>
@@ -747,11 +764,11 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
     </div>
   </div>
 
-  <!-- ⑦ QCM FINAL -->
-  <div class="etape-card e5 locked" id="etape7">
-    <div class="lock-overlay" id="lock7"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complète le quiz ⑥ pour débloquer le QCM final</div></div>
+  <!-- ⑧ QCM FINAL -->
+  <div class="etape-card e5 locked" id="etape8">
+    <div class="lock-overlay" id="lock8"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complète le quiz ⑦ pour débloquer le QCM final</div></div>
     <div class="etape-header">
-      <div class="etape-num">⑦</div>
+      <div class="etape-num">⑧</div>
       <div class="etape-icon">🎯</div>
       <div>
         <div class="etape-title">QCM Final – Valide tes acquis !</div>
@@ -1193,7 +1210,7 @@ function toggleTheme() {
 }
 
 /* ══ ÉTAT ══ */
-const done = [false,false,false,false,false,false,false];
+const done = [false,false,false,false,false,false,false,false];
 
 /* ══ VALIDER ÉTAPE ══ */
 function validerEtape(n) {
@@ -1319,25 +1336,4 @@ function nextQuestion(current) {
 
 function finirQuiz() {
   document.getElementById('q7').classList.remove('active');
-  document.getElementById('quizFill').style.width = '100%';
-  const result = document.getElementById('quizResult');
-  result.classList.add('show');
-
-  const emoji = document.getElementById('resultEmoji');
-  const score = document.getElementById('resultScore');
-  const msg   = document.getElementById('resultMsg');
-
-  score.textContent = quizScore+' / 7';
-  if (quizScore === 7) {
-    emoji.textContent = '🏆'; msg.textContent = 'Parfait ! Tu maîtrises toutes les notions du PGI. Direction le QCM final !';
-  } else if (quizScore >= 5) {
-    emoji.textContent = '👍'; msg.textContent = 'Bien joué ! Quelques notions à revoir, mais tu es prêt pour le QCM final.';
-  } else {
-    emoji.textContent = '💪'; msg.textContent = 'Revois la vidéo et le cours avant de passer au QCM final. Tu vas y arriver !';
-  }
-  // ✅ DÉBLOQUER le QCM final → etape7
-  validerEtape(6);
-}
-</script>
-</body>
-</html>
+  document.getElementById('quizFill').style.width = '100%

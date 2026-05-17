@@ -321,7 +321,7 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
     <div class="caillou-trait" id="t1"></div>
     <div class="caillou locked" id="c2" onclick="scrollTo('etape2')">
       <div class="caillou-circle">📘</div>
-      <div class="caillou-label">Synthèse cours</div>
+      <div class="caillou-label">Synthèse 1</div>
     </div>
     <div class="caillou-trait" id="t2"></div>
     <div class="caillou locked" id="c3" onclick="scrollTo('etape3')">
@@ -330,16 +330,21 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
     </div>
     <div class="caillou-trait" id="t3"></div>
     <div class="caillou locked" id="c4" onclick="scrollTo('etape4')">
-      <div class="caillou-circle">🖥️</div>
-      <div class="caillou-label">Vidéo PGI</div>
+      <div class="caillou-circle">📘</div>
+      <div class="caillou-label">Synthèse 2</div>
     </div>
     <div class="caillou-trait" id="t4"></div>
     <div class="caillou locked" id="c5" onclick="scrollTo('etape5')">
-      <div class="caillou-circle">❓</div>
-      <div class="caillou-label">Quiz PGI</div>
+      <div class="caillou-circle">🖥️</div>
+      <div class="caillou-label">Vidéo PGI</div>
     </div>
     <div class="caillou-trait" id="t5"></div>
     <div class="caillou locked" id="c6" onclick="scrollTo('etape6')">
+      <div class="caillou-circle">❓</div>
+      <div class="caillou-label">Quiz PGI</div>
+    </div>
+    <div class="caillou-trait" id="t6"></div>
+    <div class="caillou locked" id="c7" onclick="scrollTo('etape7')">
       <div class="caillou-circle">🎯</div>
       <div class="caillou-label">QCM final</div>
     </div>
@@ -372,22 +377,400 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
       </div>
     </div>
     <div class="etape-body">
-      <p class="etape-desc">Avant de lire le cours, écoute cette introduction audio pour comprendre la dualité du numérique : entre contrainte et agilité.</p>
+      <p class="etape-desc">Avant de lire le cours, regarde cette vidéo pour comprendre la dualité du numérique : entre contrainte et agilité.</p>
       <div style="position:relative;border-radius:12px;overflow:hidden;background:#000;padding-top:56.25%;">
-        <iframe
-          src="https://www.youtube.com/embed/HIpo3M81cfM?rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3"
+        <iframe src="https://www.youtube.com/embed/HIpo3M81cfM?rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3"
           style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div style="margin-top:1rem;text-align:right;">
         <button onclick="validerEtape(1)" style="background:linear-gradient(135deg,#7C3AED,#A855F7);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn1">
-          ✅ J'ai écouté → Étape suivante
+          ✅ J'ai regardé → Étape suivante
         </button>
       </div>
     </div>
   </div>
+
+  <!-- ② SYNTHÈSE PARTIE 1 + VIDÉO PROCESSUS -->
+  <div class="etape-card e2 locked" id="etape2">
+    <div class="lock-overlay" id="lock2"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete l'étape ① pour débloquer</div></div>
+    <div class="etape-header">
+      <div class="etape-num">②</div>
+      <div class="etape-icon">📘</div>
+      <div>
+        <div class="etape-title">Synthèse – Partie 1 : Les processus de gestion</div>
+        <div class="etape-type">Cours · Chapitre 9 · Partie 1</div>
+      </div>
+    </div>
+    <div class="etape-body">
+      <p class="etape-desc">Lis la première partie du cours puis regarde la vidéo associée.</p>
+      <div class="synthese-section">
+        <div class="synth-part">
+          <button class="synth-toggle" onclick="toggleSynth(this)">
+            📌 1. Les processus de gestion : qu'est-ce que c'est ?
+            <span class="arr">▶</span>
+          </button>
+          <div class="synth-content">
+            <p>Pour gagner en efficience, les organisations mettent en place des <strong>processus de gestion</strong> qui coordonnent un ensemble d'activités réalisées par différents acteurs, en mobilisant des ressources pour produire un résultat attendu.</p>
+            <p>On distingue :<br>• Les <strong>processus métier</strong> : cœur de métier de l'organisation<br>• Les <strong>processus support</strong> : mise à disposition interne de biens et services</p>
+            <p>La formalisation des processus permet d'établir des <strong>diagrammes événement-résultat</strong> pour améliorer la performance.</p>
+            <p>Avec la révolution numérique, une partie des processus peut être <strong>automatisée</strong> — avec des conséquences ambivalentes sur l'emploi.</p>
+          </div>
+        </div>
+        <div class="synth-part">
+          <button class="synth-toggle" onclick="toggleSynth(this)">
+            🎬 Vidéo – Les processus de gestion
+            <span class="arr">▶</span>
+          </button>
+          <div class="synth-content">
+            <p style="margin-bottom:.75rem;">Regarde cette vidéo pour mieux comprendre le fonctionnement des processus de gestion.</p>
+            <div style="position:relative;border-radius:12px;overflow:hidden;background:#000;padding-top:56.25%;">
+              <iframe src="https://www.youtube.com/embed/BePzV3Wvme0?start=395&rel=0&modestbranding=1"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;text-align:right;">
+        <button onclick="validerEtape(2)" style="background:linear-gradient(135deg,#2563EB,#3B82F6);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn2">
+          ✅ J'ai lu et regardé → Passer au quiz
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ QUIZ PROCESSUS -->
+  <div class="etape-card e4 locked" id="etape3">
+    <div class="lock-overlay" id="lock3"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Lis la partie 1 ② pour débloquer ce quiz</div></div>
+    <div class="etape-header">
+      <div class="etape-num">③</div>
+      <div class="etape-icon">📝</div>
+      <div>
+        <div class="etape-title">Quiz – As-tu bien compris les processus ?</div>
+        <div class="etape-type">7 questions · Basé sur la synthèse et la vidéo</div>
+      </div>
+    </div>
+    <div class="etape-body">
+      <div class="quiz-wrap">
+        <div class="quiz-score-display" id="quizScoreDisplay2">Question 1 / 7</div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizFill2" style="width:14%"></div></div>
+
+        <div class="question-block active" id="qp1">
+          <div class="q-label">Question 1 / 7</div>
+          <div class="q-text">Qu'est-ce qu'un processus de gestion ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre2(this,false,'qp1','Un processus de gestion est un ensemble coordonné d\'activités réalisées par différents acteurs pour produire un résultat attendu.')">Un logiciel de comptabilité</button>
+            <button class="opt-btn" onclick="repondre2(this,true,'qp1','Exact ! Un processus coordonne un ensemble d\'activités réalisées par différents acteurs, en mobilisant des ressources pour produire un résultat attendu.')">Un ensemble coordonné d'activités réalisées par différents acteurs pour produire un résultat attendu</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp1','Un processus de gestion est un ensemble coordonné d\'activités réalisées par différents acteurs pour produire un résultat attendu.')">Une réunion entre dirigeants</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp1','Un processus de gestion est un ensemble coordonné d\'activités réalisées par différents acteurs pour produire un résultat attendu.')">Un tableau de bord financier</button>
+          </div>
+          <div class="feedback" id="fbp1"></div>
+          <div class="quiz-nav"><button class="next-btn" id="nextp1" onclick="nextQuestion2(1)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="qp2">
+          <div class="q-label">Question 2 / 7</div>
+          <div class="q-text">Quelle est la différence entre un processus métier et un processus support ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre2(this,false,'qp2','Le processus métier = cœur de métier. Le processus support = services internes au profit des processus métier.')">Le processus métier concerne les RH, le processus support la production</button>
+            <button class="opt-btn" onclick="repondre2(this,true,'qp2','Parfait ! Le processus métier = cœur de métier. Le processus support met à disposition des biens et services en interne.')">Le processus métier = cœur de métier, le processus support fournit des services en interne</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp2','Le processus métier = cœur de métier. Le processus support = services internes au profit des processus métier.')">Ce sont deux termes identiques</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp2','Le processus métier = cœur de métier. Le processus support = services internes au profit des processus métier.')">Le processus métier est réservé aux grandes entreprises</button>
+          </div>
+          <div class="feedback" id="fbp2"></div>
+          <div class="quiz-nav"><button class="next-btn" id="nextp2" onclick="nextQuestion2(2)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="qp3">
+          <div class="q-label">Question 3 / 7</div>
+          <div class="q-text">Qu'est-ce qu'un événement déclencheur dans un processus de gestion ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre2(this,false,'qp3','L\'événement déclencheur initie le processus. Par exemple une commande client qui lance le processus de livraison.')">Ce qui clôture et termine le processus</button>
+            <button class="opt-btn" onclick="repondre2(this,true,'qp3','Exact ! L\'événement déclencheur initie et lance le processus. Exemple : une commande client déclenche le processus de livraison.')">Ce qui initie et lance le processus</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp3','L\'événement déclencheur initie le processus. Ce n\'est pas un acteur.')">Un acteur qui participe au processus</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp3','L\'événement déclencheur initie le processus. Ce n\'est pas un outil numérique.')">Un outil numérique utilisé dans le processus</button>
+          </div>
+          <div class="feedback" id="fbp3"></div>
+          <div class="quiz-nav"><button class="next-btn" id="nextp3" onclick="nextQuestion2(3)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="qp4">
+          <div class="q-label">Question 4 / 7</div>
+          <div class="q-text">Qu'est-ce qu'un événement résultat dans un processus de gestion ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre2(this,false,'qp4','L\'événement résultat clôture le processus. Exemple : la livraison effectuée termine le processus de commande.')">Ce qui déclenche et lance le processus</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp4','L\'événement résultat clôture le processus. Ce n\'est pas un acteur.')">Un acteur interne de l'organisation</button>
+            <button class="opt-btn" onclick="repondre2(this,true,'qp4','Parfait ! L\'événement résultat clôture le processus. Exemple : la livraison effectuée ou la facture émise.')">Ce qui clôture le processus et produit le résultat final</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp4','L\'événement résultat clôture le processus. Ce n\'est pas un logiciel.')">Un logiciel de gestion utilisé en fin de processus</button>
+          </div>
+          <div class="feedback" id="fbp4"></div>
+          <div class="quiz-nav"><button class="next-btn" id="nextp4" onclick="nextQuestion2(4)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="qp5">
+          <div class="q-label">Question 5 / 7</div>
+          <div class="q-text">Quelle est la différence entre un acteur interne et un acteur externe ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre2(this,false,'qp5','L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors (client, fournisseur…).')">L'acteur interne est un client, l'acteur externe est un salarié</button>
+            <button class="opt-btn" onclick="repondre2(this,true,'qp5','Exact ! L\'acteur interne appartient à l\'organisation (salarié, service, direction…), l\'acteur externe est en dehors (client, fournisseur, administration…).')">L'acteur interne appartient à l'organisation, l'acteur externe est en dehors (client, fournisseur…)</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp5','L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors (client, fournisseur…).')">Les deux termes désignent la même chose</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp5','L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors (client, fournisseur…).')">L'acteur interne gère la comptabilité, l'acteur externe gère la logistique</button>
+          </div>
+          <div class="feedback" id="fbp5"></div>
+          <div class="quiz-nav"><button class="next-btn" id="nextp5" onclick="nextQuestion2(5)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="qp6">
+          <div class="q-label">Question 6 / 7</div>
+          <div class="q-text">À quoi sert un diagramme événement-résultat ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre2(this,false,'qp6','Le diagramme événement-résultat sert à formaliser et schématiser l\'enchaînement des étapes d\'un processus.')">À calculer les bénéfices de l'organisation</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp6','Le diagramme événement-résultat sert à formaliser et schématiser l\'enchaînement des étapes d\'un processus.')">À organiser les réunions d'équipe</button>
+            <button class="opt-btn" onclick="repondre2(this,true,'qp6','Bravo ! Le diagramme événement-résultat formalise et schématise l\'enchaînement des étapes d\'un processus pour améliorer la performance.')">À formaliser et schématiser l'enchaînement des étapes d'un processus</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp6','Le diagramme événement-résultat sert à formaliser et schématiser l\'enchaînement des étapes d\'un processus.')">À gérer les stocks de l'entreprise</button>
+          </div>
+          <div class="feedback" id="fbp6"></div>
+          <div class="quiz-nav"><button class="next-btn" id="nextp6" onclick="nextQuestion2(6)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="qp7">
+          <div class="q-label">Question 7 / 7</div>
+          <div class="q-text">Quels sont les effets de l'automatisation sur l'emploi ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre2(this,false,'qp7','Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent.')">Elle supprime définitivement tous les emplois</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp7','Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent.')">Elle n'a aucun impact sur l'emploi</button>
+            <button class="opt-btn" onclick="repondre2(this,false,'qp7','Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent.')">Elle crée uniquement de nouveaux emplois</button>
+            <button class="opt-btn" onclick="repondre2(this,true,'qp7','Exact ! Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent avec les nouveaux usages du numérique.')">Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent</button>
+          </div>
+          <div class="feedback" id="fbp7"></div>
+          <div class="quiz-nav"><button class="next-btn" id="nextp7" onclick="finirQuiz2()">Voir mon résultat 🎉</button></div>
+        </div>
+
+        <div class="quiz-result" id="quizResult2">
+          <div class="result-emoji" id="resultEmoji2"></div>
+          <div class="result-score" id="resultScore2"></div>
+          <div class="result-msg" id="resultMsg2"></div>
+          <div style="margin-top:1.2rem;">
+            <button onclick="validerEtape(3)" style="background:linear-gradient(135deg,#2563EB,#3B82F6);color:#fff;border:none;padding:.7rem 1.6rem;border-radius:12px;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;margin-top:.5rem;">
+              📘 Passer à la partie 2 de la synthèse →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ SYNTHÈSE PARTIE 2 -->
+  <div class="etape-card e2 locked" id="etape4">
+    <div class="lock-overlay" id="lock4"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete le quiz ③ pour débloquer</div></div>
+    <div class="etape-header">
+      <div class="etape-num">④</div>
+      <div class="etape-icon">📘</div>
+      <div>
+        <div class="etape-title">Synthèse – Partie 2 : Les outils numériques</div>
+        <div class="etape-type">Cours · Chapitre 9 · Partie 2</div>
+      </div>
+    </div>
+    <div class="etape-body">
+      <p class="etape-desc">Lis maintenant la deuxième partie du cours sur les outils numériques qui transforment les processus.</p>
+      <div class="synthese-section">
+        <div class="synth-part">
+          <button class="synth-toggle" onclick="toggleSynth(this)">
+            🔷 2A. Le PGI, outil d'amélioration des processus
+            <span class="arr">▶</span>
+          </button>
+          <div class="synth-content">
+            <p>Les <strong>Progiciels de Gestion Intégrés (PGI)</strong> améliorent la circulation de l'information entre les différentes bases de données de l'entreprise.</p>
+            <p>⚠️ Mais attention : il existe des <strong>contraintes fortes</strong> en termes de paramétrage et de maintenance qui peuvent <strong>rigidifier et ralentir</strong> l'organisation.</p>
+          </div>
+        </div>
+        <div class="synth-part">
+          <button class="synth-toggle" onclick="toggleSynth(this)">
+            ☁️ 2B. De nouvelles solutions pour plus d'agilité
+            <span class="arr">▶</span>
+          </button>
+          <div class="synth-content">
+            <p>Le <strong>cloud computing</strong> permet une meilleure accessibilité des données et favorise le développement des <strong>applications métier</strong> et la <strong>mobilité</strong> des acteurs.</p>
+            <p>Le <strong>télétravail</strong> est un exemple concret d'agilité — devenu une nécessité lors de la crise COVID-19.</p>
+            <p>L'<strong>intelligence artificielle</strong> automatise certains processus pour concentrer les ressources humaines sur les tâches à forte valeur ajoutée.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;text-align:right;">
+        <button onclick="validerEtape(4)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn4">
+          ✅ J'ai lu → Passer à la vidéo PGI
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ VIDÉO PGI -->
+  <div class="etape-card e3 locked" id="etape5">
+    <div class="lock-overlay" id="lock5"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete l'étape ④ pour débloquer</div></div>
+    <div class="etape-header">
+      <div class="etape-num">⑤</div>
+      <div class="etape-icon">🖥️</div>
+      <div>
+        <div class="etape-title">Comprendre le PGI en vidéo</div>
+        <div class="etape-type">Vidéo · Les notions clés du PGI</div>
+      </div>
+    </div>
+    <div class="etape-body">
+      <p class="etape-desc">Regarde cette vidéo sur le PGI. Prends des notes ! Un quiz t'attend juste après. 👀</p>
+      <div class="iframe-wrap">
+        <iframe src="https://www.youtube.com/embed/jtyFZzgZ5Yo" height="340" allowfullscreen></iframe>
+      </div>
+      <div style="margin-top:1rem;text-align:right;">
+        <button onclick="validerEtape(5)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn5">
+          ✅ J'ai regardé → Passer au quiz PGI
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ QUIZ PGI -->
+  <div class="etape-card e4 locked" id="etape6">
+    <div class="lock-overlay" id="lock6"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Regarde la vidéo ⑤ pour débloquer le quiz</div></div>
+    <div class="etape-header">
+      <div class="etape-num">⑥</div>
+      <div class="etape-icon">❓</div>
+      <div>
+        <div class="etape-title">Quiz – As-tu bien compris le PGI ?</div>
+        <div class="etape-type">7 questions · Basé sur la vidéo</div>
+      </div>
+    </div>
+    <div class="etape-body">
+      <div class="quiz-wrap">
+        <div class="quiz-score-display" id="quizScoreDisplay">Question 1 / 7</div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizFill" style="width:14%"></div></div>
+
+        <div class="question-block active" id="q1">
+          <div class="q-label">Question 1 / 7</div>
+          <div class="q-text">Que signifie PGI ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre(this,false,'q1','PGI = Progiciel de Gestion Intégré. Équivalent français de l\'ERP.')">Plateforme de Gestion Informatisée</button>
+            <button class="opt-btn" onclick="repondre(this,true,'q1','Bravo ! PGI = Progiciel de Gestion Intégré. En anglais : ERP (Enterprise Resource Planning).')">Progiciel de Gestion Intégré</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q1','PGI = Progiciel de Gestion Intégré. Équivalent français de l\'ERP.')">Processus de Gestion Intelligente</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q1','PGI = Progiciel de Gestion Intégré. Équivalent français de l\'ERP.')">Programme de Gestion Intégrée</button>
+          </div>
+          <div class="feedback" id="fb1"></div>
+          <div class="quiz-nav"><button class="next-btn" id="next1" onclick="nextQuestion(1)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="q2">
+          <div class="q-label">Question 2 / 7</div>
+          <div class="q-text">Quel est le rôle principal d'un PGI dans une organisation ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre(this,false,'q2','Un PGI centralise toutes les données et processus dans une seule solution.')">Gérer uniquement la paie des salariés</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q2','Un PGI centralise toutes les données et processus dans une seule solution.')">Faire la comptabilité de l'entreprise</button>
+            <button class="opt-btn" onclick="repondre(this,true,'q2','Exact ! Le PGI centralise l\'ensemble des processus et données dans une seule solution pour améliorer l\'efficacité globale.')">Centraliser l'ensemble des processus et données dans une solution unique</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q2','Un PGI centralise toutes les données et processus dans une seule solution.')">Gérer la communication externe</button>
+          </div>
+          <div class="feedback" id="fb2"></div>
+          <div class="quiz-nav"><button class="next-btn" id="next2" onclick="nextQuestion(2)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="q3">
+          <div class="q-label">Question 3 / 7</div>
+          <div class="q-text">Comment s'appelle chaque fonctionnalité spécifique d'un PGI (comptabilité, stocks, RH…) ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre(this,false,'q3','Dans un PGI, chaque fonctionnalité s\'appelle un module.')">Un plugin</button>
+            <button class="opt-btn" onclick="repondre(this,true,'q3','Parfait ! Un PGI est composé de modules, chacun dédié à un domaine précis de gestion.')">Un module</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q3','Dans un PGI, chaque fonctionnalité s\'appelle un module.')">Un widget</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q3','Dans un PGI, chaque fonctionnalité s\'appelle un module.')">Un serveur</button>
+          </div>
+          <div class="feedback" id="fb3"></div>
+          <div class="quiz-nav"><button class="next-btn" id="next3" onclick="nextQuestion(3)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="q4">
+          <div class="q-label">Question 4 / 7</div>
+          <div class="q-text">Quelle est la principale caractéristique de la base de données dans un PGI ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre(this,false,'q4','Dans un PGI, la base de données est unique, centralisée et mise à jour en temps réel.')">Elle est différente pour chaque service</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q4','La base de données d\'un PGI est accessible à tous les utilisateurs autorisés.')">Elle est accessible uniquement à la direction</button>
+            <button class="opt-btn" onclick="repondre(this,true,'q4','Exactement ! Le PGI repose sur une base de données unique, centralisée et mise à jour en temps réel.')">Elle est unique, centralisée et mise à jour en temps réel</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q4','Dans un PGI, la base de données est mise à jour automatiquement et en temps réel.')">Elle doit être mise à jour manuellement chaque semaine</button>
+          </div>
+          <div class="feedback" id="fb4"></div>
+          <div class="quiz-nav"><button class="next-btn" id="next4" onclick="nextQuestion(4)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="q5">
+          <div class="q-label">Question 5 / 7</div>
+          <div class="q-text">Le PGI peut-il aussi être source de rigidité pour l'organisation ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre(this,false,'q5','Le PGI peut rigidifier l\'organisation : son paramétrage complexe peut ralentir les processus.')">Non, le PGI ne génère que de l'agilité</button>
+            <button class="opt-btn" onclick="repondre(this,true,'q5','Exact ! C\'est tout le paradoxe du PGI : il améliore la circulation de l\'information mais ses contraintes peuvent rigidifier l\'organisation.')">Oui, son paramétrage complexe peut rigidifier et ralentir l'organisation</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q5','Le PGI peut créer de la rigidité mais aussi de l\'agilité selon son utilisation.')">Non, il est neutre et n'a aucun impact</button>
+          </div>
+          <div class="feedback" id="fb5"></div>
+          <div class="quiz-nav"><button class="next-btn" id="next5" onclick="nextQuestion(5)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="q6">
+          <div class="q-label">Question 6 / 7</div>
+          <div class="q-text">Qu'est-ce qu'un événement déclencheur dans un processus de gestion ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre(this,false,'q6','L\'événement déclencheur initie le processus. L\'événement résultat le clôture.')">Ce qui clôture et termine le processus</button>
+            <button class="opt-btn" onclick="repondre(this,true,'q6','Exact ! L\'événement déclencheur initie et lance le processus, par exemple une commande client qui déclenche le processus de livraison.')">Ce qui initie et lance le processus</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q6','L\'événement déclencheur initie le processus. Ce n\'est pas un acteur.')">Un acteur qui participe au processus</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q6','L\'événement déclencheur initie le processus. Ce n\'est pas un outil numérique.')">Un outil numérique utilisé dans le processus</button>
+          </div>
+          <div class="feedback" id="fb6"></div>
+          <div class="quiz-nav"><button class="next-btn" id="next6" onclick="nextQuestion(6)">Question suivante →</button></div>
+        </div>
+
+        <div class="question-block" id="q7">
+          <div class="q-label">Question 7 / 7</div>
+          <div class="q-text">Quelle est la différence entre un acteur interne et un acteur externe dans un processus ?</div>
+          <div class="options">
+            <button class="opt-btn" onclick="repondre(this,false,'q7','L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors (client, fournisseur…).')">L'acteur interne est un client, l'acteur externe est un salarié</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q7','L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors (client, fournisseur…).')">Les deux termes désignent la même chose</button>
+            <button class="opt-btn" onclick="repondre(this,true,'q7','Parfait ! L\'acteur interne appartient à l\'organisation (salarié, service, direction…), l\'acteur externe est en dehors (client, fournisseur, administration…).')">L'acteur interne appartient à l'organisation, l'acteur externe est en dehors (client, fournisseur…)</button>
+            <button class="opt-btn" onclick="repondre(this,false,'q7','L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors (client, fournisseur…).')">L'acteur interne gère la comptabilité, l'acteur externe gère la logistique</button>
+          </div>
+          <div class="feedback" id="fb7"></div>
+          <div class="quiz-nav"><button class="next-btn" id="next7" onclick="finirQuiz()">Voir mon résultat 🎉</button></div>
+        </div>
+
+        <div class="quiz-result" id="quizResult">
+          <div class="result-emoji" id="resultEmoji"></div>
+          <div class="result-score" id="resultScore"></div>
+          <div class="result-msg" id="resultMsg"></div>
+          <div style="margin-top:1.2rem;">
+            <p style="font-size:.82rem;color:#6EE7B7;font-weight:600;">✅ Le QCM final vient de se débloquer — descends pour le lancer !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑦ QCM FINAL -->
+  <div class="etape-card e5 locked" id="etape7">
+    <div class="lock-overlay" id="lock7"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complète le quiz ⑥ pour débloquer le QCM final</div></div>
+    <div class="etape-header">
+      <div class="etape-num">⑦</div>
+      <div class="etape-icon">🎯</div>
+      <div>
+        <div class="etape-title">QCM Final – Valide tes acquis !</div>
+        <div class="etape-type">Évaluation finale · NotebookLM</div>
+      </div>
+    </div>
+    <div class="etape-body">
+      <div class="qcm-final" id="qcmFinal">
+        <div class="qcm-final-icon">🏆</div>
+        <div class="qcm-final-title">Tu as tout parcouru — bravo !</div>
+        <div class="qcm-final-desc">Lance le QCM final pour valider l'ensemble de tes connaissances sur la séquence.</div>
+        <a class="qcm-link active"
+           href="https://notebooklm.google.com/notebook/3e86a30b-b1fa-46f7-bfe2-7a597812ce96/artifact/4b07ecb2-1fce-4ff1-9bd9-637615ebc63a"
+           target="_blank">🎯 Lancer le QCM final</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- fin .etapes -->
 
   <!-- ② SYNTHÈSE COURS -->
   <div class="etape-card e2 locked" id="etape2">
@@ -511,463 +894,4 @@ body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--txt);
           <div class="q-text">Quelle est la différence entre un processus métier et un processus support ?</div>
           <div class="options">
             <button class="opt-btn" onclick="repondre2(this, false, 'qp2', 'Le processus métier correspond au cœur de métier de l\'organisation, tandis que le processus support met à disposition des biens et services en interne.')">Le processus métier concerne les RH, le processus support concerne la production</button>
-            <button class="opt-btn" onclick="repondre2(this, true, 'qp2', 'Parfait ! Le processus métier correspond au cœur de métier, le processus support met à disposition des biens et services en interne au profit des processus métier.')">Le processus métier correspond au cœur de métier, le processus support fournit des services en interne</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp2', 'Le processus métier correspond au cœur de métier de l\'organisation, tandis que le processus support met à disposition des biens et services en interne.')">Ce sont deux termes identiques qui désignent la même chose</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp2', 'Le processus métier correspond au cœur de métier de l\'organisation, tandis que le processus support met à disposition des biens et services en interne.')">Le processus métier est réservé aux grandes entreprises</button>
-          </div>
-          <div class="feedback" id="fbp2"></div>
-          <div class="quiz-nav"><button class="next-btn" id="nextp2" onclick="nextQuestion2(2)">Question suivante →</button></div>
-        </div>
-
-        <!-- QP3 -->
-        <div class="question-block" id="qp3">
-          <div class="q-label">Question 3 / 7</div>
-          <div class="q-text">Qu'est-ce qu'un événement déclencheur dans un processus de gestion ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp3', 'L\'événement déclencheur est ce qui initie le processus. Par exemple une commande client qui lance le processus de livraison.')">Ce qui clôture et termine le processus</button>
-            <button class="opt-btn" onclick="repondre2(this, true, 'qp3', 'Exact ! L\'événement déclencheur est ce qui initie et lance le processus. Par exemple une commande client qui déclenche le processus de livraison.')">Ce qui initie et lance le processus</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp3', 'L\'événement déclencheur est ce qui initie le processus. Ce n\'est pas un acteur mais un fait déclenchant.')">Un acteur qui participe au processus</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp3', 'L\'événement déclencheur est ce qui initie le processus. Ce n\'est pas un outil numérique.')">Un outil numérique utilisé dans le processus</button>
-          </div>
-          <div class="feedback" id="fbp3"></div>
-          <div class="quiz-nav"><button class="next-btn" id="nextp3" onclick="nextQuestion2(3)">Question suivante →</button></div>
-        </div>
-
-        <!-- QP4 -->
-        <div class="question-block" id="qp4">
-          <div class="q-label">Question 4 / 7</div>
-          <div class="q-text">Qu'est-ce qu'un événement résultat dans un processus de gestion ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp4', 'L\'événement résultat est ce qui clôture le processus. Par exemple la livraison effectuée qui termine le processus de commande.')">Ce qui déclenche et lance le processus</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp4', 'L\'événement résultat est ce qui clôture le processus. Ce n\'est pas un acteur.')">Un acteur interne de l'organisation</button>
-            <button class="opt-btn" onclick="repondre2(this, true, 'qp4', 'Parfait ! L\'événement résultat clôture le processus. C\'est le résultat final produit, par exemple la livraison effectuée ou la facture émise.')">Ce qui clôture le processus et produit le résultat final</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp4', 'L\'événement résultat est ce qui clôture le processus. Ce n\'est pas un logiciel.')">Un logiciel de gestion utilisé en fin de processus</button>
-          </div>
-          <div class="feedback" id="fbp4"></div>
-          <div class="quiz-nav"><button class="next-btn" id="nextp4" onclick="nextQuestion2(4)">Question suivante →</button></div>
-        </div>
-
-        <!-- QP5 -->
-        <div class="question-block" id="qp5">
-          <div class="q-label">Question 5 / 7</div>
-          <div class="q-text">Quelle est la différence entre un acteur interne et un acteur externe dans un processus ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp5', 'L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors de l\'organisation (client, fournisseur…).')">L'acteur interne est un client, l'acteur externe est un salarié</button>
-            <button class="opt-btn" onclick="repondre2(this, true, 'qp5', 'Exact ! L\'acteur interne appartient à l\'organisation (salarié, service, direction…), l\'acteur externe est en dehors (client, fournisseur, administration…).')">L'acteur interne appartient à l'organisation, l'acteur externe est en dehors (client, fournisseur…)</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp5', 'L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors de l\'organisation (client, fournisseur…).')">Les deux termes désignent la même chose</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp5', 'L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors de l\'organisation (client, fournisseur…).')">L'acteur interne gère la comptabilité, l'acteur externe gère la logistique</button>
-          </div>
-          <div class="feedback" id="fbp5"></div>
-          <div class="quiz-nav"><button class="next-btn" id="nextp5" onclick="nextQuestion2(5)">Question suivante →</button></div>
-        </div>
-
-        <!-- QP6 -->
-        <div class="question-block" id="qp6">
-          <div class="q-label">Question 6 / 7</div>
-          <div class="q-text">À quoi sert un diagramme événement-résultat ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp6', 'Le diagramme événement-résultat sert à formaliser et schématiser l\'enchaînement des étapes d\'un processus.')">À calculer les bénéfices de l'organisation</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp6', 'Le diagramme événement-résultat sert à formaliser et schématiser l\'enchaînement des étapes d\'un processus.')">À organiser les réunions d'équipe</button>
-            <button class="opt-btn" onclick="repondre2(this, true, 'qp6', 'Bravo ! Le diagramme événement-résultat permet de formaliser et schématiser l\'enchaînement des étapes d\'un processus pour améliorer la performance.')">À formaliser et schématiser l'enchaînement des étapes d'un processus</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp6', 'Le diagramme événement-résultat sert à formaliser et schématiser l\'enchaînement des étapes d\'un processus.')">À gérer les stocks de l'entreprise</button>
-          </div>
-          <div class="feedback" id="fbp6"></div>
-          <div class="quiz-nav"><button class="next-btn" id="nextp6" onclick="nextQuestion2(6)">Question suivante →</button></div>
-        </div>
-
-        <!-- QP7 -->
-        <div class="question-block" id="qp7">
-          <div class="q-label">Question 7 / 7</div>
-          <div class="q-text">Quels sont les effets de l'automatisation sur l'emploi ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp7', 'Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent avec les nouveaux usages du numérique.')">Elle supprime définitivement tous les emplois</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp7', 'Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent avec les nouveaux usages du numérique.')">Elle n'a aucun impact sur l'emploi</button>
-            <button class="opt-btn" onclick="repondre2(this, false, 'qp7', 'Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent avec les nouveaux usages du numérique.')">Elle crée uniquement de nouveaux emplois</button>
-            <button class="opt-btn" onclick="repondre2(this, true, 'qp7', 'Exact ! Les effets sont ambivalents : certains emplois semblent menacés mais de nouveaux métiers apparaissent avec les nouveaux usages du numérique.')">Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent</button>
-          </div>
-          <div class="feedback" id="fbp7"></div>
-          <div class="quiz-nav"><button class="next-btn" id="nextp7" onclick="finirQuiz2()">Voir mon résultat 🎉</button></div>
-        </div>
-
-        <!-- RÉSULTAT QUIZ 1 -->
-        <div class="quiz-result" id="quizResult2">
-          <div class="result-emoji" id="resultEmoji2"></div>
-          <div class="result-score" id="resultScore2"></div>
-          <div class="result-msg"   id="resultMsg2"></div>
-          <div style="margin-top:1.2rem;">
-            <button onclick="validerEtape(3)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.7rem 1.6rem;border-radius:12px;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;margin-top:.5rem;">
-              🖥️ Passer à la vidéo PGI →
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ④ VIDÉO PGI -->
-  <div class="etape-card e3 locked" id="etape4">
-    <div class="lock-overlay" id="lock4">
-      <div class="lock-overlay-icon">🔒</div>
-      <div class="lock-overlay-txt">Complete le quiz ③ pour débloquer</div>
-    </div>
-    <div class="etape-header">
-      <div class="etape-num">④</div>
-      <div class="etape-icon">🖥️</div>
-      <div>
-        <div class="etape-title">Comprendre le PGI en vidéo</div>
-        <div class="etape-type">Vidéo · Les notions clés du PGI</div>
-      </div>
-    </div>
-    <div class="etape-body">
-      <p class="etape-desc">Regarde cette vidéo sur le PGI. Prends des notes ! Un quiz t'attend juste après pour vérifier ta compréhension. 👀</p>
-      <div class="iframe-wrap">
-        <iframe src="https://www.youtube.com/embed/jtyFZzgZ5Yo" height="340" allowfullscreen></iframe>
-      </div>
-      <div style="margin-top:1rem;text-align:right;">
-        <button onclick="validerEtape(4)" style="background:linear-gradient(135deg,#0891B2,#06B6D4);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;" id="btn4">
-          ✅ J'ai regardé → Passer au quiz
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ⑤ QUIZ PGI -->
-  <div class="etape-card e4 locked" id="etape5">
-    <div class="lock-overlay" id="lock5">
-      <div class="lock-overlay-icon">🔒</div>
-      <div class="lock-overlay-txt">Regarde la vidéo ④ pour débloquer le quiz</div>
-    </div>
-    <div class="etape-header">
-      <div class="etape-num">⑤</div>
-      <div class="etape-icon">❓</div>
-      <div>
-        <div class="etape-title">Quiz – As-tu bien compris le PGI ?</div>
-        <div class="etape-type">5 questions · Basé sur la vidéo</div>
-      </div>
-    </div>
-    <div class="etape-body">
-      <div class="quiz-wrap">
-        <div class="quiz-score-display" id="quizScoreDisplay">Question 1 / 7</div>
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizFill" style="width:14%"></div></div>
-
-        <!-- Q1 -->
-        <div class="question-block active" id="q1">
-          <div class="q-label">Question 1 / 5</div>
-          <div class="q-text">Que signifie PGI ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre(this, false, 'q1', 'PGI signifie Progiciel de Gestion Intégré. C\'est l\'équivalent français de l\'ERP (Enterprise Resource Planning).')">Plateforme de Gestion Informatisée</button>
-            <button class="opt-btn" onclick="repondre(this, true,  'q1', 'Bravo ! PGI = Progiciel de Gestion Intégré. En anglais : ERP (Enterprise Resource Planning).')">Progiciel de Gestion Intégré</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q1', 'PGI signifie Progiciel de Gestion Intégré. C\'est l\'équivalent français de l\'ERP (Enterprise Resource Planning).')">Processus de Gestion Intelligente</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q1', 'PGI signifie Progiciel de Gestion Intégré. C\'est l\'équivalent français de l\'ERP (Enterprise Resource Planning).')">Programme de Gestion Intégrée</button>
-          </div>
-          <div class="feedback" id="fb1"></div>
-          <div class="quiz-nav"><button class="next-btn" id="next1" onclick="nextQuestion(1)">Question suivante →</button></div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="question-block" id="q2">
-          <div class="q-label">Question 2 / 5</div>
-          <div class="q-text">Quel est le rôle principal d'un PGI dans une organisation ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre(this, false, 'q2', 'Un PGI centralise toutes les données et processus dans une seule solution. Il ne sert pas uniquement à gérer la paie.')">Gérer uniquement la paie des salariés</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q2', 'Un PGI centralise toutes les données et processus dans une seule solution. Il n\'est pas limité à la comptabilité.')">Faire la comptabilité de l'entreprise</button>
-            <button class="opt-btn" onclick="repondre(this, true,  'q2', 'Exact ! Le PGI centralise l\'ensemble des processus et données dans une seule solution pour améliorer l\'efficacité globale.')">Centraliser l'ensemble des processus et données dans une solution unique</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q2', 'Un PGI centralise toutes les données et processus dans une seule solution. La communication externe est gérée par d\'autres outils.')">Gérer la communication externe de l'entreprise</button>
-          </div>
-          <div class="feedback" id="fb2"></div>
-          <div class="quiz-nav"><button class="next-btn" id="next2" onclick="nextQuestion(2)">Question suivante →</button></div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="question-block" id="q3">
-          <div class="q-label">Question 3 / 5</div>
-          <div class="q-text">Comment s'appelle chaque fonctionnalité spécifique d'un PGI (comptabilité, stocks, RH…) ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre(this, false, 'q3', 'Dans un PGI, chaque fonctionnalité spécifique s\'appelle un module. On parle de module comptabilité, module stocks, module RH, etc.')">Un plugin</button>
-            <button class="opt-btn" onclick="repondre(this, true,  'q3', 'Parfait ! Un PGI est composé de modules, chacun dédié à un domaine précis de gestion (comptabilité, stocks, RH, production…).')">Un module</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q3', 'Dans un PGI, chaque fonctionnalité spécifique s\'appelle un module. Un widget est un terme utilisé dans d\'autres contextes.')">Un widget</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q3', 'Dans un PGI, chaque fonctionnalité spécifique s\'appelle un module. Un serveur est un équipement matériel, pas une fonctionnalité logicielle.')">Un serveur</button>
-          </div>
-          <div class="feedback" id="fb3"></div>
-          <div class="quiz-nav"><button class="next-btn" id="next3" onclick="nextQuestion(3)">Question suivante →</button></div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="question-block" id="q4">
-          <div class="q-label">Question 4 / 5</div>
-          <div class="q-text">Quelle est la principale caractéristique d'une base de données dans un PGI ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre(this, false, 'q4', 'Dans un PGI, la base de données est unique et partagée entre tous les services. Elle est mise à jour en temps réel.')">Elle est différente pour chaque service de l'entreprise</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q4', 'La base de données d\'un PGI est accessible à tous les utilisateurs autorisés, pas uniquement à la direction.')">Elle est accessible uniquement à la direction</button>
-            <button class="opt-btn" onclick="repondre(this, true,  'q4', 'Exactement ! Le PGI repose sur une base de données unique, centralisée et mise à jour en temps réel par tous les utilisateurs.')">Elle est unique, centralisée et mise à jour en temps réel</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q4', 'Dans un PGI, la base de données est mise à jour automatiquement et en temps réel, sans intervention manuelle.')">Elle doit être mise à jour manuellement chaque semaine</button>
-          </div>
-          <div class="feedback" id="fb4"></div>
-          <div class="quiz-nav"><button class="next-btn" id="next4" onclick="nextQuestion(4)">Question suivante →</button></div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="question-block" id="q5">
-          <div class="q-label">Question 5 / 5</div>
-          <div class="q-text">Le PGI peut-il aussi être source de rigidité pour l'organisation ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre(this, false, 'q5', 'Si ! Le PGI peut rigidifier l\'organisation : son paramétrage complexe et ses contraintes de maintenance peuvent ralentir les processus.')">Non, le PGI ne génère que de l'agilité</button>
-            <button class="opt-btn" onclick="repondre(this, true,  'q5', 'Exact ! C\'est tout le paradoxe du PGI : il améliore la circulation de l\'information mais ses contraintes de paramétrage peuvent aussi rigidifier l\'organisation.')">Oui, son paramétrage complexe peut rigidifier et ralentir l'organisation</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q5', 'Ce n\'est pas exact. Le PGI peut créer de la rigidité mais aussi de l\'agilité selon la façon dont il est utilisé.')">Non, il est neutre et n'a aucun impact sur l'organisation</button>
-          </div>
-          <div class="feedback" id="fb5"></div>
-          <div class="quiz-nav"><button class="next-btn" id="next5" onclick="nextQuestion(5)">Question suivante →</button></div>
-        </div>
-
-        <!-- Q6 -->
-        <div class="question-block" id="q6">
-          <div class="q-label">Question 6 / 7</div>
-          <div class="q-text">Qu'est-ce qu'un événement déclencheur dans un processus de gestion ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre(this, false, 'q6', 'L\'événement déclencheur est ce qui initie le processus. L\'événement résultat est ce qui clôture le processus.')">Ce qui clôture et termine le processus</button>
-            <button class="opt-btn" onclick="repondre(this, true, 'q6', 'Exact ! L\'événement déclencheur est ce qui initie et lance le processus, par exemple une commande client qui déclenche le processus de livraison.')">Ce qui initie et lance le processus</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q6', 'L\'événement déclencheur est ce qui initie le processus. Ce n\'est pas un acteur mais un fait déclenchant.')">Un acteur qui participe au processus</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q6', 'L\'événement déclencheur est ce qui initie le processus. Ce n\'est pas un outil numérique.')">Un outil numérique utilisé dans le processus</button>
-          </div>
-          <div class="feedback" id="fb6"></div>
-          <div class="quiz-nav"><button class="next-btn" id="next6" onclick="nextQuestion(6)">Question suivante →</button></div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="question-block" id="q7">
-          <div class="q-label">Question 7 / 7</div>
-          <div class="q-text">Quelle est la différence entre un acteur interne et un acteur externe dans un processus ?</div>
-          <div class="options">
-            <button class="opt-btn" onclick="repondre(this, false, 'q7', 'L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors de l\'organisation (client, fournisseur…).')">L'acteur interne est un client, l'acteur externe est un salarié</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q7', 'L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors de l\'organisation (client, fournisseur…).')">Les deux termes désignent la même chose</button>
-            <button class="opt-btn" onclick="repondre(this, true, 'q7', 'Parfait ! L\'acteur interne appartient à l\'organisation (salarié, service, direction…), l\'acteur externe est en dehors de l\'organisation (client, fournisseur, administration…).')">L'acteur interne appartient à l'organisation, l'acteur externe est en dehors (client, fournisseur…)</button>
-            <button class="opt-btn" onclick="repondre(this, false, 'q7', 'L\'acteur interne appartient à l\'organisation (salarié, service…), l\'acteur externe est en dehors de l\'organisation (client, fournisseur…).')">L'acteur interne gère la comptabilité, l'acteur externe gère la logistique</button>
-          </div>
-          <div class="feedback" id="fb7"></div>
-          <div class="quiz-nav"><button class="next-btn" id="next7" onclick="finirQuiz()">Voir mon résultat 🎉</button></div>
-        </div>
-
-        <!-- RÉSULTAT -->
-        <div class="quiz-result" id="quizResult">
-          <div class="result-emoji" id="resultEmoji"></div>
-          <div class="result-score" id="resultScore"></div>
-          <div class="result-msg"   id="resultMsg"></div>
-          <div style="margin-top:1.2rem;">
-            <p style="font-size:.82rem;color:#6EE7B7;font-weight:600;">✅ Le QCM final vient de se débloquer — descends pour le lancer !</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ⑥ QCM FINAL -->
-  <div class="etape-card e5 locked" id="etape6">
-    <div class="lock-overlay" id="lock6">
-      <div class="lock-overlay-icon">🔒</div>
-      <div class="lock-overlay-txt">Complète le quiz ⑤ pour débloquer le QCM final</div>
-    </div>
-    <div class="etape-header">
-      <div class="etape-num">⑥</div>
-      <div class="etape-icon">🎯</div>
-      <div>
-        <div class="etape-title">QCM Final – Valide tes acquis !</div>
-        <div class="etape-type">Évaluation finale · NotebookLM</div>
-      </div>
-    </div>
-    <div class="etape-body">
-      <div class="qcm-final" id="qcmFinal">
-        <div class="qcm-final-icon" id="qcmIcon">🏆</div>
-        <div class="qcm-final-title" id="qcmTitle">Tu as tout parcouru — bravo !</div>
-        <div class="qcm-final-desc" id="qcmDesc">Lance le QCM final pour valider l'ensemble de tes connaissances sur la séquence.</div>
-        <a class="qcm-link active" id="qcmLink"
-           href="https://notebooklm.google.com/notebook/3e86a30b-b1fa-46f7-bfe2-7a597812ce96/artifact/4b07ecb2-1fce-4ff1-9bd9-637615ebc63a"
-           target="_blank">
-          🎯 Lancer le QCM final
-        </a>
-      </div>
-    </div>
-  </div>
-
-</div><!-- fin .etapes -->
-
-<!-- ══ FOOTER ══ -->
-<footer class="page-footer">
-  <strong>SGN · 1ère STMG</strong> &nbsp;|&nbsp; Thème 2 : Numérique et intelligence collective
-  &nbsp;|&nbsp; Chapitre 9 – Agilité ou rigidité organisationnelle ?
-</footer>
-
-<script>
-/* ══ THÈME ══ */
-function toggleTheme() {
-  const h = document.documentElement;
-  const b = document.getElementById('themeBtn');
-  if (h.getAttribute('data-theme')==='dark') {
-    h.setAttribute('data-theme','light'); b.textContent='🌙 Mode sombre';
-  } else {
-    h.setAttribute('data-theme','dark'); b.textContent='☀️ Mode clair';
-  }
-}
-
-/* ══ ÉTAT ══ */
-const done = [false,false,false,false,false,false];
-
-/* ══ VALIDER ÉTAPE ══ */
-function validerEtape(n) {
-  if (done[n-1]) return;
-  done[n-1] = true;
-
-  // caillou actuel → done
-  const cAct = document.getElementById('c'+n);
-  cAct.classList.remove('active'); cAct.classList.add('done');
-
-  // trait → done
-  const t = document.getElementById('t'+n);
-  if (t) t.classList.add('done');
-
-  // débloquer étape suivante
-  const next = n+1;
-  const cNext = document.getElementById('c'+next);
-  const eNext = document.getElementById('etape'+next);
-  const lNext = document.getElementById('lock'+next);
-
-  if (cNext) { cNext.classList.remove('locked'); cNext.classList.add('active'); }
-  if (eNext) {
-    eNext.classList.remove('locked');
-    setTimeout(()=>{ eNext.scrollIntoView({behavior:'smooth',block:'start'}); }, 300);
-  }
-  if (lNext) lNext.classList.add('hidden');
-
-  // cacher bouton validé
-  const btn = document.getElementById('btn'+n);
-  if (btn) { btn.textContent='✅ Étape validée !'; btn.disabled=true; btn.style.opacity='.5'; }
-}
-
-/* ══ SCROLL ══ */
-function scrollTo(id) {
-  const el = document.getElementById(id);
-  if (el && !el.classList.contains('locked')) {
-    el.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-}
-
-/* ══ ACCORDÉON SYNTHÈSE ══ */
-function toggleSynth(btn) {
-  const content = btn.nextElementSibling;
-  btn.classList.toggle('open');
-  content.classList.toggle('show');
-}
-
-/* ══ QUIZ ══ */
-  /* ── Quiz Processus ── */
-  let quizScore2 = 0;
-  const GIF_OK2 = 'https://media.giphy.com/media/xT9IgDEI1iZyb2wqo8/giphy.gif'; // Kermit danse
-  const GIF_KO2 = 'https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif'; // Homer recule dans les buissons
-
-  function repondre2(btn, correct, qId, explication) {
-    const block = document.getElementById(qId);
-    const btns  = block.querySelectorAll('.opt-btn');
-    const fb    = document.getElementById('fb'+qId.slice(1));
-    const next  = document.getElementById('next'+qId.slice(1));
-    btns.forEach(b => { b.disabled = true; });
-    if (correct) {
-      btn.classList.add('correct');
-      fb.className = 'feedback show ok';
-      fb.innerHTML = `<img class="feedback-gif" src="${GIF_OK2}" alt="Bravo !"><div class="feedback-txt">✅ ${explication}</div>`;
-      quizScore2++;
-    } else {
-      btn.classList.add('wrong');
-      btns.forEach(b => { if (b.onclick.toString().includes('true')) b.classList.add('correct'); });
-      fb.className = 'feedback show ko';
-      fb.innerHTML = `<img class="feedback-gif" src="${GIF_KO2}" alt="Dommage !"><div class="feedback-txt">❌ ${explication}</div>`;
-    }
-    next.classList.add('show');
-  }
-
-  function nextQuestion2(current) {
-    document.getElementById('qp'+current).classList.remove('active');
-    const next = current+1;
-    document.getElementById('qp'+next).classList.add('active');
-    document.getElementById('quizFill2').style.width = ((next/7)*100)+'%';
-    document.getElementById('quizScoreDisplay2').textContent = 'Question '+next+' / 7';
-  }
-
-  function finirQuiz2() {
-    document.getElementById('qp7').classList.remove('active');
-    document.getElementById('quizFill2').style.width = '100%';
-    const result = document.getElementById('quizResult2');
-    result.classList.add('show');
-    const emoji = document.getElementById('resultEmoji2');
-    const score = document.getElementById('resultScore2');
-    const msg   = document.getElementById('resultMsg2');
-    score.textContent = quizScore2+' / 7';
-    if (quizScore2 === 7) {
-      emoji.textContent = '🏆'; msg.textContent = 'Parfait ! Tu maîtrises tous les processus de gestion. Direction la vidéo PGI !';
-    } else if (quizScore2 >= 5) {
-      emoji.textContent = '👍'; msg.textContent = 'Bien joué ! Tu peux passer à la suite.';
-    } else {
-      emoji.textContent = '💪'; msg.textContent = 'Revois la synthèse et la vidéo avant de continuer. Tu vas y arriver !';
-    }
-  }
-
-  /* ── Quiz PGI ── */
-  let quizScore = 0;
-
-const GIF_OK = 'https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif';
-const GIF_KO = 'https://media.giphy.com/media/l1J9RFoDzCDrkqtEc/giphy.gif';
-
-function repondre(btn, correct, qId, explication) {
-  const block = document.getElementById(qId);
-  const btns  = block.querySelectorAll('.opt-btn');
-  const fb    = document.getElementById('fb'+qId.slice(1));
-  const next  = document.getElementById('next'+qId.slice(1));
-
-  btns.forEach(b => { b.disabled = true; });
-
-  if (correct) {
-    btn.classList.add('correct');
-    fb.className = 'feedback show ok';
-    fb.innerHTML = `<img class="feedback-gif" src="${GIF_OK}" alt="Bravo !"><div class="feedback-txt">✅ ${explication}</div>`;
-    quizScore++;
-  } else {
-    btn.classList.add('wrong');
-    btns.forEach(b => { if (b.onclick.toString().includes('true')) b.classList.add('correct'); });
-    fb.className = 'feedback show ko';
-    fb.innerHTML = `<img class="feedback-gif" src="${GIF_KO}" alt="Dommage !"><div class="feedback-txt">❌ ${explication}</div>`;
-  }
-  next.classList.add('show');
-}
-
-function nextQuestion(current) {
-  document.getElementById('q'+current).classList.remove('active');
-  const next = current+1;
-  document.getElementById('q'+next).classList.add('active');
-  document.getElementById('quizFill').style.width = ((next/7)*100)+'%';
-  document.getElementById('quizScoreDisplay').textContent = 'Question '+next+' / 7';
-}
-
-function finirQuiz() {
-  document.getElementById('q7').classList.remove('active');
-  document.getElementById('quizFill').style.width = '100%';
-  const result = document.getElementById('quizResult');
-  result.classList.add('show');
-
-  const emoji = document.getElementById('resultEmoji');
-  const score = document.getElementById('resultScore');
-  const msg   = document.getElementById('resultMsg');
-
-  score.textContent = quizScore+' / 7';
-  if (quizScore === 7) {
-    emoji.textContent = '🏆'; msg.textContent = 'Parfait ! Tu maîtrises toutes les notions du PGI. Direction le QCM final !';
-  } else if (quizScore >= 5) {
-    emoji.textContent = '👍'; msg.textContent = 'Bien joué ! Quelques notions à revoir, mais tu es prêt pour le QCM final.';
-  } else {
-    emoji.textContent = '💪'; msg.textContent = 'Revois la vidéo et le cours avant de passer au QCM final. Tu vas y arriver !';
-  }
-  // ✅ DÉBLOQUER le QCM final → etape6
-  validerEtape(5);
-}
-</script>
-</body>
-</html>
-
+            <button class="opt-btn" onclick="repondre2(this, true, 'qp2', 'Parfait ! Le processus métier correspond au cœur de métier, le processus support met à disposition des biens et services en interne au profit des processus métier.')">Le processus métier correspond au cœur de métier, le 

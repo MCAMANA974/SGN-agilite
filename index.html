@@ -1,1 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGN • Le numérique crée-t-il de l'agilité ?</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#0D1117;--card:#1C2333;--border:rgba(255,255,255,0.08);--txt:#E2E8F0;--muted:#64748B;--muted2:#94A3B8;}
+[data-theme="light"]{--bg:#F1F5F9;--card:#fff;--border:rgba(0,0,0,0.09);--txt:#0F172A;--muted:#64748B;--muted2:#475569;}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;transition:background .3s,color .3s;}
 
+.theme-btn{position:fixed;top:1rem;right:1rem;z-index:999;background:var(--card);border:1px solid var(--border);color:var(--txt);padding:.45rem .9rem;border-radius:99px;cursor:pointer;font-size:.75rem;font-weight:600;font-family:'Poppins',sans-serif;}
+
+.hero{position:relative;padding:4rem 2rem 2.5rem;text-align:center;overflow:hidden;background:linear-gradient(160deg,#0D1117 0%,#131929 50%,#0D1117 100%);}
+[data-theme="light"] .hero{background:linear-gradient(160deg,#1E3A8A,#1D4ED8);}
+.accroche{display:inline-block;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);color:#FCD34D;font-size:.85rem;font-style:italic;padding:.5rem 1.2rem;border-radius:12px;margin-bottom:1.5rem;}
+.chip{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.35);color:#93C5FD;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border-radius:99px;margin-bottom:1.2rem;}
+.chip-dot{width:7px;height:7px;border-radius:50%;background:#3B82F6;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(1.5rem,4vw,2.6rem);font-weight:800;line-height:1.2;max-width:720px;margin:0 auto .5rem;color:#fff;}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#60A5FA,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-sub{color:#93C5FD;font-size:.88rem;margin-bottom:1.5rem;}
+
+.chemin-section{max-width:900px;margin:2.5rem auto 0;padding:0 1rem;}
+.chemin-title{text-align:center;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:1.5rem;}
+.chemin{display:flex;align-items:center;justify-content:center;gap:0;overflow-x:auto;padding-bottom:.5rem;}
+.caillou{display:flex;flex-direction:column;align-items:center;gap:.4rem;cursor:pointer;flex-shrink:0;}
+.caillou-circle{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:2px solid var(--border);background:var(--card);transition:all .35s;}
+.caillou.locked .caillou-circle{opacity:.4;cursor:not-allowed;filter:grayscale(1);}
+.caillou.active .caillou-circle{background:#2563EB;border-color:#2563EB;box-shadow:0 0 0 8px rgba(37,99,235,.2);}
+.caillou.done .caillou-circle{background:#10B981;border-color:#10B981;}
+.caillou-label{font-size:.6rem;font-weight:600;color:var(--muted);text-align:center;max-width:60px;}
+.caillou.active .caillou-label{color:#60A5FA;}
+.caillou.done .caillou-label{color:#10B981;}
+.caillou-trait{width:28px;height:3px;border-radius:99px;background:var(--border);flex-shrink:0;transition:background .4s;}
+.caillou-trait.done{background:#10B981;}
+.chemin-hint{text-align:center;margin-top:.85rem;font-size:.75rem;color:var(--muted);font-style:italic;}
+
+.qg-wrap{max-width:860px;margin:2rem auto 0;padding:0 1.5rem;}
+.qg-banner{padding:1.3rem 1.8rem;background:linear-gradient(135deg,rgba(37,99,235,.18),rgba(6,182,212,.12));border:1px solid rgba(37,99,235,.3);border-radius:16px;display:flex;align-items:center;gap:1rem;}
+.qg-icon{font-size:1.8rem;flex-shrink:0;}
+.qg-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#60A5FA;margin-bottom:.25rem;}
+.qg-text{font-size:.98rem;font-weight:700;color:#E0F2FE;line-height:1.35;}
+
+.etapes{max-width:860px;margin:2.5rem auto 0;padding:0 1.5rem 4rem;display:flex;flex-direction:column;gap:1.5rem;}
+
+.etape-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform .25s,box-shadow .25s,opacity .4s;position:relative;contain:layout;}
+.etape-card.locked{opacity:.35;pointer-events:none;filter:grayscale(.6);}
+.etape-card:not(.locked):hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(0,0,0,.45);}
+.etape-header{padding:1.2rem 1.5rem 1rem;display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--border);}
+.etape-num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:#fff;flex-shrink:0;}
+.etape-icon{font-size:1.5rem;flex-shrink:0;}
+.etape-title{font-size:1rem;font-weight:700;}
+.etape-type{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;opacity:.5;margin-top:.1rem;}
+.etape-body{padding:1.2rem 1.5rem;}
+.etape-desc{font-size:.83rem;color:var(--muted2);line-height:1.6;margin-bottom:1rem;}
+
+.lock-overlay{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(13,17,23,.7);gap:.5rem;z-index:5;border-radius:20px;overflow:hidden;}
+.lock-overlay.hidden{display:none;}
+.lock-overlay-icon{font-size:2rem;}
+.lock-overlay-txt{font-size:.8rem;color:var(--muted2);font-weight:600;}
+
+.e1 .etape-num{background:#7C3AED;} .e1 .etape-title{color:#C4B5FD;}
+.e2 .etape-num{background:#2563EB;} .e2 .etape-title{color:#93C5FD;}
+.e3 .etape-num{background:#0891B2;} .e3 .etape-title{color:#67E8F9;}
+.e4 .etape-num{background:#D97706;} .e4 .etape-title{color:#FCD34D;}
+.e5 .etape-num{background:#059669;} .e5 .etape-title{color:#6EE7B7;}
+
+.video-wrap{position:relative;border-radius:12px;overflow:hidden;background:#000;padding-top:56.25%;margin-top:.5rem;}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+
+.synth-section{margin-top:.5rem;}
+.synth-part{border:1px solid var(--border);border-radius:12px;margin-bottom:.6rem;overflow:hidden;}
+.synth-btn{width:100%;background:none;border:none;color:var(--txt);font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:600;padding:.85rem 1.1rem;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.synth-btn:hover{background:rgba(255,255,255,.04);}
+.synth-arr{transition:transform .3s;font-size:.8rem;}
+.synth-btn.open .synth-arr{transform:rotate(90deg);}
+.synth-content{display:none;padding:.8rem 1.1rem 1rem;font-size:.8rem;color:var(--muted2);line-height:1.65;border-top:1px solid var(--border);}
+.synth-content.show{display:block;}
+.synth-content p{margin-bottom:.5rem;}
+.synth-content strong{color:var(--txt);}
+
+.quiz-wrap{margin-top:.5rem;}
+.quiz-progress-bar{height:5px;background:var(--border);border-radius:99px;margin-bottom:1.2rem;overflow:hidden;}
+.quiz-fill{height:100%;background:linear-gradient(90deg,#D97706,#F59E0B);border-radius:99px;transition:width .4s;}
+.quiz-score{text-align:right;font-size:.72rem;color:var(--muted);margin-bottom:.8rem;}
+.q-block{display:none;}
+.q-block.active{display:block;}
+.q-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#F59E0B;margin-bottom:.5rem;}
+.q-text{font-size:.88rem;font-weight:600;color:var(--txt);line-height:1.5;margin-bottom:.9rem;}
+.options{display:flex;flex-direction:column;gap:.5rem;}
+.opt{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:.7rem 1rem;font-size:.82rem;color:var(--txt);font-family:'Poppins',sans-serif;text-align:left;cursor:pointer;transition:all .2s;}
+.opt:hover:not(:disabled){background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.4);}
+.opt.correct{background:rgba(16,185,129,.15);border-color:#10B981;color:#6EE7B7;}
+.opt.wrong{background:rgba(239,68,68,.12);border-color:#EF4444;color:#FCA5A5;}
+.opt:disabled{cursor:default;}
+.feedback-box{margin-top:.75rem;padding:.7rem 1rem;border-radius:10px;font-size:.8rem;line-height:1.5;display:none;align-items:center;gap:1rem;}
+.feedback-box.show{display:flex;}
+.feedback-box.ok{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;}
+.feedback-box.ko{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#FCA5A5;}
+.feedback-gif{width:80px;height:80px;border-radius:10px;object-fit:cover;flex-shrink:0;}
+.q-nav{margin-top:1rem;display:flex;justify-content:flex-end;}
+.next-btn{background:linear-gradient(135deg,#D97706,#F59E0B);color:#fff;font-weight:700;font-size:.82rem;padding:.6rem 1.4rem;border-radius:10px;border:none;cursor:pointer;font-family:'Poppins',sans-serif;display:none;transition:transform .2s;}
+.next-btn.show{display:block;}
+.quiz-result{text-align:center;padding:1.5rem 1rem;display:none;}
+.quiz-result.show{display:block;}
+.result-emoji{font-size:3rem;margin-bottom:.75rem;}
+.result-score{font-size:1.4rem;font-weight:800;margin-bottom:.4rem;}
+.result-msg{font-size:.83rem;color:var(--muted2);}
+
+.action-btn{display:inline-block;color:#fff;font-weight:700;font-size:.82rem;padding:.6rem 1.4rem;border-radius:10px;border:none;cursor:pointer;font-family:'Poppins',sans-serif;margin-top:1rem;transition:transform .2s;}
+.action-btn:hover{transform:translateY(-2px);}
+
+.qcm-final-box{background:var(--card);border:2px dashed rgba(16,185,129,.3);border-radius:20px;padding:2.5rem 2rem;text-align:center;transition:all .4s;}
+.qcm-final-box.unlocked{border-style:solid;border-color:rgba(16,185,129,.6);background:rgba(16,185,129,.06);}
+.qcm-final-icon{font-size:3rem;margin-bottom:.75rem;}
+.qcm-final-title{font-size:1.1rem;font-weight:700;color:var(--muted);margin-bottom:.4rem;}
+.qcm-final-box.unlocked .qcm-final-title{color:#6EE7B7;}
+.qcm-final-desc{font-size:.82rem;color:var(--muted);margin-bottom:1.5rem;}
+.qcm-link{display:inline-block;background:linear-gradient(135deg,#059669,#10B981);color:#fff;font-weight:700;font-size:.9rem;padding:.9rem 2.2rem;border-radius:14px;text-decoration:none;opacity:.3;pointer-events:none;transition:opacity .4s,transform .2s;}
+.qcm-link.active{opacity:1;pointer-events:auto;}
+.qcm-link.active:hover{transform:translateY(-3px);}
+
+.page-footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);color:var(--muted);font-size:.73rem;}
+.page-footer strong{color:#3B82F6;}
+</style>
+</head>
+<body>
+
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀️ Mode clair</button>
+
+<section class="hero">
+  <div class="accroche">💬 « Le numérique nous libère… ou nous enferme dans de nouveaux automatismes. »</div>
+  <div class="chip"><span class="chip-dot"></span>SGN · 1ère STMG · Thème 2</div>
+  <h1>Le numérique crée-t-il de <em>l'agilité</em><br>ou de la <em>rigidité</em> organisationnelle&nbsp;?</h1>
+  <p class="hero-sub">Chapitre 9 – Le système numérique et les processus de gestion</p>
+</section>
+
+<!-- CHEMIN -->
+<div class="chemin-section">
+  <div class="chemin-title">🪨 Ton parcours — avance caillou par caillou</div>
+  <div class="chemin">
+    <div class="caillou active" id="c1"><div class="caillou-circle">🎬</div><div class="caillou-label">Vidéo intro</div></div>
+    <div class="caillou-trait" id="t1"></div>
+    <div class="caillou locked" id="c2"><div class="caillou-circle">📘</div><div class="caillou-label">Fiche Res. 1</div></div>
+    <div class="caillou-trait" id="t2"></div>
+    <div class="caillou locked" id="c3"><div class="caillou-circle">🎬</div><div class="caillou-label">Vidéo process.</div></div>
+    <div class="caillou-trait" id="t3"></div>
+    <div class="caillou locked" id="c4"><div class="caillou-circle">📝</div><div class="caillou-label">Quiz process.</div></div>
+    <div class="caillou-trait" id="t4"></div>
+    <div class="caillou locked" id="c5"><div class="caillou-circle">📘</div><div class="caillou-label">Fiche Res. 2</div></div>
+    <div class="caillou-trait" id="t5"></div>
+    <div class="caillou locked" id="c6"><div class="caillou-circle">🖥️</div><div class="caillou-label">Vidéo PGI</div></div>
+    <div class="caillou-trait" id="t6"></div>
+    <div class="caillou locked" id="c7"><div class="caillou-circle">❓</div><div class="caillou-label">Quiz PGI</div></div>
+    <div class="caillou-trait" id="t7"></div>
+    <div class="caillou locked" id="c8"><div class="caillou-circle">🎯</div><div class="caillou-label">QCM final</div></div>
+    <div class="caillou-trait" id="t8"></div>
+    <div class="caillou locked" id="c9"><div class="caillou-circle">🎓</div><div class="caillou-label">Conclusion</div></div>
+  </div>
+  <div class="chemin-hint">Chaque étape se déverrouille quand tu complètes la précédente ✅</div>
+</div>
+
+<!-- QG -->
+<div class="qg-wrap">
+  <div class="qg-banner">
+    <div class="qg-icon">❓</div>
+    <div>
+      <div class="qg-label">Question de gestion · Programme BO</div>
+      <div class="qg-text">Le numérique crée-t-il de l'agilité ou de la rigidité organisationnelle ?</div>
+    </div>
+  </div>
+</div>
+
+<!-- ETAPES -->
+<div class="etapes">
+
+<!-- ① VIDÉO INTRO -->
+<div class="etape-card e1" id="etape1">
+  <div class="etape-header">
+    <div class="etape-num">①</div><div class="etape-icon">🎬</div>
+    <div><div class="etape-title">Le Paradoxe Numérique</div><div class="etape-type">Vidéo d'introduction · Commence ici !</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="etape-desc">Regarde cette vidéo pour comprendre la dualité du numérique : entre contrainte et agilité.</p>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/HIpo3M81cfM?rel=0&modestbranding=1" allowfullscreen></iframe></div>
+    <div style="text-align:right;margin-top:1rem;">
+      <button class="action-btn" style="background:linear-gradient(135deg,#7C3AED,#A855F7);" onclick="valider(1)">✅ J'ai regardé → Étape suivante</button>
+    </div>
+  </div>
+</div>
+
+<!-- ② SYNTHÈSE PARTIE 1 -->
+<div class="etape-card e2 locked" id="etape2">
+  <div class="lock-overlay" id="lock2"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete l'étape ① pour débloquer</div></div>
+  <div class="etape-header">
+    <div class="etape-num">②</div><div class="etape-icon">📘</div>
+    <div><div class="etape-title">Fiche Ressources – Partie 1 : Les processus de gestion</div><div class="etape-type">Fiche Ressources · Chapitre 9 · Partie 1</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="etape-desc">Lis attentivement cette première partie avant de regarder la vidéo.</p>
+    <div class="synth-section">
+      <div class="synth-part">
+        <button class="synth-btn" onclick="toggleSynth(this)">📌 1. Les processus de gestion : qu'est-ce que c'est ? <span class="synth-arr">▶</span></button>
+        <div class="synth-content">
+          <p>Pour gagner en efficience, les organisations mettent en place des <strong>processus de gestion</strong> qui coordonnent un ensemble d'activités réalisées par différents acteurs, en mobilisant des ressources pour produire un résultat attendu.</p>
+          <p>On distingue :<br>• Les <strong>processus métier</strong> : cœur de métier de l'organisation<br>• Les <strong>processus support</strong> : mise à disposition interne de biens et services</p>
+          <p>La formalisation des processus permet d'établir des <strong>diagrammes événement-résultat</strong> pour améliorer la performance.</p>
+          <p>Avec la révolution numérique, une partie des processus peut être <strong>automatisée</strong> — avec des conséquences ambivalentes sur l'emploi.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:right;margin-top:1rem;">
+      <button class="action-btn" style="background:linear-gradient(135deg,#2563EB,#3B82F6);" onclick="valider(2)">✅ J'ai lu → Regarder la vidéo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ③ VIDÉO PROCESSUS -->
+<div class="etape-card e3 locked" id="etape3">
+  <div class="lock-overlay" id="lock3"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Lis la fiche ressources ② pour débloquer</div></div>
+  <div class="etape-header">
+    <div class="etape-num">③</div><div class="etape-icon">🎬</div>
+    <div><div class="etape-title">Vidéo – Les processus de gestion</div><div class="etape-type">Vidéo · ~14 min · Prends des notes !</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="etape-desc">Regarde attentivement cette vidéo (~14 min). Un quiz t'attend juste après ! 👀</p>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/BePzV3Wvme0?start=395&rel=0&modestbranding=1" allowfullscreen></iframe></div>
+    <div style="text-align:right;margin-top:1rem;">
+      <button class="action-btn" style="background:linear-gradient(135deg,#0891B2,#06B6D4);" onclick="valider(3)">✅ J'ai regardé → Passer au quiz</button>
+    </div>
+  </div>
+</div>
+
+<!-- ④ QUIZ PROCESSUS -->
+<div class="etape-card e4 locked" id="etape4">
+  <div class="lock-overlay" id="lock4"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Regarde la vidéo ③ pour débloquer ce quiz</div></div>
+  <div class="etape-header">
+    <div class="etape-num">④</div><div class="etape-icon">📝</div>
+    <div><div class="etape-title">Quiz – As-tu bien compris les processus ?</div><div class="etape-type">7 questions · Basé sur la fiche ressources et la vidéo</div></div>
+  </div>
+  <div class="etape-body">
+    <div class="quiz-wrap">
+      <div class="quiz-score" id="qs2">Question 1 / 7</div>
+      <div class="quiz-progress-bar"><div class="quiz-fill" id="qf2" style="width:14%"></div></div>
+
+      <div class="q-block active" id="qp1">
+        <div class="q-label">Question 1 / 7</div>
+        <div class="q-text">Qu'est-ce qu'un processus de gestion ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep2(this,false,1)">Un logiciel de comptabilité</button>
+          <button class="opt" onclick="rep2(this,true,1)">Un ensemble coordonné d'activités réalisées par différents acteurs pour produire un résultat attendu</button>
+          <button class="opt" onclick="rep2(this,false,1)">Une réunion entre dirigeants</button>
+          <button class="opt" onclick="rep2(this,false,1)">Un tableau de bord financier</button>
+        </div>
+        <div class="feedback-box" id="fb2_1"></div>
+        <div class="q-nav"><button class="next-btn" id="nb2_1" onclick="nextQ2(1)">Question suivante →</button></div>
+      </div>
+
+      <div class="q-block" id="qp2">
+        <div class="q-label">Question 2 / 7</div>
+        <div class="q-text">Quelle est la différence entre un processus métier et un processus support ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep2(this,false,2)">Le processus métier concerne les RH, le processus support la production</button>
+          <button class="opt" onclick="rep2(this,true,2)">Le processus métier correspond au coeur de métier, le processus support fournit des services en interne</button>
+          <button class="opt" onclick="rep2(this,false,2)">Ce sont deux termes identiques</button>
+          <button class="opt" onclick="rep2(this,false,2)">Le processus métier est réservé aux grandes entreprises</button>
+        </div>
+        <div class="feedback-box" id="fb2_2"></div>
+        <div class="q-nav"><button class="next-btn" id="nb2_2" onclick="nextQ2(2)">Question suivante →</button></div>
+      </div>
+
+      <div class="q-block" id="qp3">
+        <div class="q-label">Question 3 / 7</div>
+        <div class="q-text">Qu'est-ce qu'un événement déclencheur dans un processus de gestion ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep2(this,false,3)">Ce qui clôture et termine le processus</button>
+          <button class="opt" onclick="rep2(this,true,3)">Ce qui initie et lance le processus</button>
+          <button class="opt" onclick="rep2(this,false,3)">Un acteur qui participe au processus</button>
+          <button class="opt" onclick="rep2(this,false,3)">Un outil numérique utilisé dans le processus</button>
+        </div>
+        <div class="feedback-box" id="fb2_3"></div>
+        <div class="q-nav"><button class="next-btn" id="nb2_3" onclick="nextQ2(3)">Question suivante →</button></div>
+      </div>
+
+      <div class="q-block" id="qp4">
+        <div class="q-label">Question 4 / 7</div>
+        <div class="q-text">Qu'est-ce qu'un événement résultat dans un processus de gestion ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep2(this,false,4)">Ce qui déclenche et lance le processus</button>
+          <button class="opt" onclick="rep2(this,false,4)">Un acteur interne de l'organisation</button>
+          <button class="opt" onclick="rep2(this,true,4)">Ce qui clôture le processus et produit le résultat final</button>
+          <button class="opt" onclick="rep2(this,false,4)">Un logiciel de gestion utilisé en fin de processus</button>
+        </div>
+        <div class="feedback-box" id="fb2_4"></div>
+        <div class="q-nav"><button class="next-btn" id="nb2_4" onclick="nextQ2(4)">Question suivante →</button></div>
+      </div>
+
+      <div class="q-block" id="qp5">
+        <div class="q-label">Question 5 / 7</div>
+        <div class="q-text">Quelle est la différence entre un acteur interne et un acteur externe ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep2(this,false,5)">L'acteur interne est un client, l'acteur externe est un salarié</button>
+          <button class="opt" onclick="rep2(this,true,5)">L'acteur interne appartient à l'organisation, l'acteur externe est en dehors (client, fournisseur…)</button>
+          <button class="opt" onclick="rep2(this,false,5)">Les deux termes désignent la même chose</button>
+          <button class="opt" onclick="rep2(this,false,5)">L'acteur interne gère la comptabilité, l'acteur externe gère la logistique</button>
+        </div>
+        <div class="feedback-box" id="fb2_5"></div>
+        <div class="q-nav"><button class="next-btn" id="nb2_5" onclick="nextQ2(5)">Question suivante →</button></div>
+      </div>
+
+      <div class="q-block" id="qp6">
+        <div class="q-label">Question 6 / 7</div>
+        <div class="q-text">A quoi sert un diagramme événement-résultat ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep2(this,false,6)">A calculer les bénéfices de l'organisation</button>
+          <button class="opt" onclick="rep2(this,false,6)">A organiser les réunions d'équipe</button>
+          <button class="opt" onclick="rep2(this,true,6)">A formaliser et schématiser l'enchaînement des étapes d'un processus</button>
+          <button class="opt" onclick="rep2(this,false,6)">A gérer les stocks de l'entreprise</button>
+        </div>
+        <div class="feedback-box" id="fb2_6"></div>
+        <div class="q-nav"><button class="next-btn" id="nb2_6" onclick="nextQ2(6)">Question suivante →</button></div>
+      </div>
+
+      <div class="q-block" id="qp7">
+        <div class="q-label">Question 7 / 7</div>
+        <div class="q-text">Quels sont les effets de l'automatisation sur l'emploi ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep2(this,false,7)">Elle supprime définitivement tous les emplois</button>
+          <button class="opt" onclick="rep2(this,false,7)">Elle n'a aucun impact sur l'emploi</button>
+          <button class="opt" onclick="rep2(this,false,7)">Elle crée uniquement de nouveaux emplois</button>
+          <button class="opt" onclick="rep2(this,true,7)">Les effets sont ambivalents : certains emplois sont menacés mais de nouveaux métiers apparaissent</button>
+        </div>
+        <div class="feedback-box" id="fb2_7"></div>
+        <div class="q-nav"><button class="next-btn" id="nb2_7" onclick="finirQ2()">Voir mon résultat 🎉</button></div>
+      </div>
+
+      <div class="quiz-result" id="qr2">
+        <div class="result-emoji" id="re2"></div>
+        <div class="result-score" id="rs2"></div>
+        <div class="result-msg" id="rm2"></div>
+        <div style="margin-top:1.2rem;">
+          <button class="action-btn" style="background:linear-gradient(135deg,#2563EB,#3B82F6);" onclick="valider(4)">📘 Passer à la partie 2 de la fiche ressources →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ SYNTHÈSE PARTIE 2 -->
+<div class="etape-card e2 locked" id="etape5">
+  <div class="lock-overlay" id="lock5"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete le quiz ④ pour débloquer</div></div>
+  <div class="etape-header">
+    <div class="etape-num">⑤</div><div class="etape-icon">📘</div>
+    <div><div class="etape-title">Fiche Ressources – Partie 2 : Les outils numériques</div><div class="etape-type">Fiche Ressources · Chapitre 9 · Partie 2</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="etape-desc">Lis maintenant la deuxième partie sur les outils numériques.</p>
+    <div class="synth-section">
+      <div class="synth-part">
+        <button class="synth-btn" onclick="toggleSynth(this)">🔷 2A. Le PGI, outil d'amélioration des processus <span class="synth-arr">▶</span></button>
+        <div class="synth-content">
+          <p>Les <strong>Progiciels de Gestion Intégrés (PGI)</strong> améliorent la circulation de l'information entre les différentes bases de données de l'entreprise.</p>
+          <p>⚠️ Mais attention : il existe des <strong>contraintes fortes</strong> en termes de paramétrage et de maintenance qui peuvent <strong>rigidifier et ralentir</strong> l'organisation.</p>
+        </div>
+      </div>
+      <div class="synth-part">
+        <button class="synth-btn" onclick="toggleSynth(this)">☁️ 2B. De nouvelles solutions pour plus d'agilité <span class="synth-arr">▶</span></button>
+        <div class="synth-content">
+          <p>Le <strong>cloud computing</strong> permet une meilleure accessibilité des données et favorise le développement des <strong>applications métier</strong> et la <strong>mobilité</strong> des acteurs.</p>
+          <p>Le <strong>télétravail</strong> est un exemple concret d'agilité — devenu une nécessité lors de la crise COVID-19.</p>
+          <p>L'<strong>intelligence artificielle</strong> automatise certains processus pour concentrer les ressources humaines sur les tâches à forte valeur ajoutée.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:right;margin-top:1rem;">
+      <button class="action-btn" style="background:linear-gradient(135deg,#0891B2,#06B6D4);" onclick="valider(5)">✅ J'ai lu → Passer à la vidéo PGI</button>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ VIDÉO PGI -->
+<div class="etape-card e3 locked" id="etape6">
+  <div class="lock-overlay" id="lock6"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Complete l'étape ⑤ pour débloquer</div></div>
+  <div class="etape-header">
+    <div class="etape-num">⑥</div><div class="etape-icon">🖥️</div>
+    <div><div class="etape-title">Comprendre le PGI en vidéo</div><div class="etape-type">Vidéo · Les notions clés du PGI</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="etape-desc">Regarde cette vidéo sur le PGI. Prends des notes ! Un quiz t'attend juste après. 👀</p>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/jtyFZzgZ5Yo?rel=0&modestbranding=1" allowfullscreen></iframe></div>
+    <div style="text-align:right;margin-top:1rem;">
+      <button class="action-btn" style="background:linear-gradient(135deg,#0891B2,#06B6D4);" onclick="valider(6)">✅ J'ai regardé → Passer au quiz PGI</button>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ QUIZ PGI -->
+<div class="etape-card e4 locked" id="etape7">
+  <div class="lock-overlay" id="lock7"><div class="lock-overlay-icon">🔒</div><div class="lock-overlay-txt">Regarde la vidéo ⑥ pour débloquer le quiz</div></div>
+  <div class="etape-header">
+    <div class="etape-num">⑦</div><div class="etape-icon">❓</div>
+    <div><div class="etape-title">Quiz – As-tu bien compris le PGI ?</div><div class="etape-type">7 questions · Basé sur la vidéo</div></div>
+  </div>
+  <div class="etape-body">
+    <div class="quiz-wrap">
+      <div class="quiz-score" id="qs1">Question 1 / 7</div>
+      <div class="quiz-progress-bar"><div class="quiz-fill" id="qf1" style="width:14%"></div></div>
+
+      <div class="q-block active" id="qq1">
+        <div class="q-label">Question 1 / 7</div>
+        <div class="q-text">Que signifie PGI ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep1(this,false,1)">Plateforme de Gestion Informatisée</button>
+          <button class="opt" onclick="rep1(this,true,1)">Progiciel de Gestion Intégré</button>
+          <button class="opt" onclick="rep1(this,false,1)">Processus de Gestion Intelligente</button>
+          <button class="opt" onclick="rep1(this,false,1)">Programme de Gestion Intégrée</button>
+        </div>
+        <div class="feedback-box" id="fb1_1"></div>
+        <div class="q-nav"><button class="next-btn" id="nb1_1" onclick="nextQ1(1)">Question suivante →</button></div>
+      </div>
+
+      <div class="q-block" id="qq2">
+        <div class="q-label">Question 2 / 7</div>
+        <div class="q-text">Quel est le rôle principal d'un PGI dans une organisation ?</div>
+        <div class="options">
+          <button class="opt" onclick="rep1(this,false,2)">Gérer uniquement la paie des salariés</button>

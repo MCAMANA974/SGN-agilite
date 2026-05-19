@@ -1,1 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGN - Le numérique crée-t-il de l'agilité ?</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',sans-serif;background:#0D1117;color:#E2E8F0;min-height:100vh;}
+.hero{background:linear-gradient(160deg,#0D1117,#131929);padding:3rem 1.5rem 2rem;text-align:center;}
+.accroche{color:#FCD34D;font-style:italic;font-size:.85rem;margin-bottom:1rem;}
+.chip{display:inline-block;background:rgba(37,99,235,.2);border:1px solid rgba(37,99,235,.4);color:#93C5FD;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:99px;margin-bottom:1rem;}
+h1{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:800;color:#fff;line-height:1.25;margin-bottom:.5rem;}
+h1 span{color:#22D3EE;}
+.sub{color:#93C5FD;font-size:.85rem;}
+.qg{max-width:800px;margin:2rem auto;padding:0 1.5rem;}
+.qg-box{background:linear-gradient(135deg,rgba(37,99,235,.18),rgba(6,182,212,.12));border:1px solid rgba(37,99,235,.3);border-radius:14px;padding:1.2rem 1.5rem;}
+.qg-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#60A5FA;margin-bottom:.3rem;}
+.qg-text{font-size:.95rem;font-weight:700;color:#E0F2FE;}
+.parcours{max-width:800px;margin:0 auto;padding:1.5rem;}
+.etape{background:#1C2333;border:1px solid rgba(255,255,255,.08);border-radius:18px;margin-bottom:1rem;overflow:hidden;transition:opacity .4s;}
+.etape.locked{opacity:.3;pointer-events:none;}
+.etape-header{padding:1rem 1.2rem;display:flex;align-items:center;gap:.8rem;border-bottom:1px solid rgba(255,255,255,.08);}
+.etape-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;flex-shrink:0;}
+.etape-icon{font-size:1.3rem;}
+.etape-titre{font-size:.92rem;font-weight:700;}
+.etape-type{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;opacity:.5;margin-top:.1rem;}
+.etape-body{padding:1.2rem;}
+.desc{font-size:.82rem;color:#94A3B8;line-height:1.6;margin-bottom:1rem;}
+.vignette{display:block;background:#000;border-radius:10px;text-decoration:none;margin-bottom:1rem;overflow:hidden;}
+.vignette img{width:100%;display:block;}
+.vignette-label{color:#fff;font-size:.8rem;padding:.6rem 1rem;text-align:center;}
+.btn-valider{display:block;width:100%;padding:.75rem;border:none;border-radius:10px;color:#fff;font-weight:700;font-size:.85rem;cursor:pointer;font-family:inherit;margin-top:1rem;transition:opacity .2s;}
+.btn-valider:hover{opacity:.85;}
+.accordion-btn{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.8rem 1rem;color:#E2E8F0;font-size:.82rem;cursor:pointer;text-align:left;margin-bottom:.5rem;font-family:inherit;display:flex;justify-content:space-between;}
+.accordion-content{display:none;background:rgba(37,99,235,.08);border-radius:10px;padding:1rem;font-size:.8rem;color:#94A3B8;line-height:1.65;margin-bottom:.5rem;}
+.accordion-content p{margin-bottom:.5rem;}
+.accordion-content strong{color:#E2E8F0;}
+.quiz-prog-bar{height:5px;background:rgba(255,255,255,.08);border-radius:99px;margin-bottom:1rem;overflow:hidden;}
+.quiz-prog-fill{height:100%;background:linear-gradient(90deg,#D97706,#F59E0B);border-radius:99px;transition:width .4s;}
+.quiz-info{text-align:right;font-size:.72rem;color:#64748B;margin-bottom:.8rem;}
+.q-texte{font-size:.88rem;font-weight:600;color:#E2E8F0;margin-bottom:.9rem;line-height:1.5;}
+.q-options{display:flex;flex-direction:column;gap:.5rem;}
+.q-opt{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.7rem 1rem;font-size:.82rem;color:#E2E8F0;font-family:inherit;text-align:left;cursor:pointer;transition:all .2s;}
+.q-opt:hover:not(:disabled){background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.4);}
+.q-opt.ok{background:rgba(16,185,129,.15);border-color:#10B981;color:#6EE7B7;}
+.q-opt.ko{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.5);color:#FCA5A5;}
+.feedback{margin-top:.75rem;padding:.7rem 1rem;border-radius:10px;font-size:.8rem;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:#6EE7B7;}
+.feedback.ko{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#FCA5A5;}
+.btn-suivant{display:none;float:right;padding:.6rem 1.4rem;border:none;border-radius:10px;background:linear-gradient(135deg,#D97706,#F59E0B);color:#fff;font-weight:700;font-size:.82rem;cursor:pointer;font-family:inherit;margin-top:1rem;}
+.btn-suivant.show{display:block;}
+.result{display:none;text-align:center;padding:1.5rem;}
+.result.show{display:block;}
+.result-score{font-size:1.4rem;font-weight:800;margin-bottom:.4rem;}
+.result-msg{font-size:.82rem;color:#94A3B8;}
+.choix-box{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+.choix-card{border-radius:14px;padding:1.2rem;text-align:center;}
+.choix-card .choix-icon{font-size:1.5rem;margin-bottom:.5rem;}
+.choix-card .choix-titre{font-size:.85rem;font-weight:700;margin-bottom:.3rem;}
+.choix-card .choix-desc{font-size:.75rem;color:#94A3B8;margin-bottom:.75rem;}
+.btn-choix{padding:.5rem 1.1rem;border-radius:10px;border:none;color:#fff;font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;}
+.alerte{background:rgba(239,68,68,.12);border:2px solid rgba(239,68,68,.4);border-radius:14px;padding:1rem 1.2rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
+.conclusion-box{background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.35);border-radius:14px;padding:1.2rem 1.5rem;text-align:center;margin-bottom:1.5rem;}
+.col2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+.col-box{border-radius:14px;padding:1rem;}
+.col-box-item{border-radius:8px;padding:.5rem .75rem;margin-bottom:.5rem;}
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.08);color:#64748B;font-size:.73rem;}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="accroche">💬 « Le numérique nous libère… ou nous enferme dans de nouveaux automatismes. »</div>
+  <div class="chip">SGN · 1ère STMG · Thème 2</div>
+  <h1>Le numérique crée-t-il de <span>l'agilité</span><br>ou de la <span>rigidité</span> organisationnelle ?</h1>
+  <p class="sub">Chapitre 9 – Le système numérique et les processus de gestion</p>
+</section>
+
+<div class="qg">
+  <div class="qg-box">
+    <div class="qg-label">Question de gestion · Programme BO</div>
+    <div class="qg-text">Le numérique crée-t-il de l'agilité ou de la rigidité organisationnelle ?</div>
+  </div>
+</div>
+
+<div class="parcours">
+
+<!-- ETAPE 1 -->
+<div class="etape" id="e1">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#7C3AED;">①</div>
+    <div class="etape-icon">🎬</div>
+    <div><div class="etape-titre" style="color:#C4B5FD;">Le Paradoxe Numérique</div><div class="etape-type">Vidéo d'introduction · Commence ici !</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="desc">Regarde cette vidéo pour comprendre la dualité du numérique : entre contrainte et agilité.</p>
+    <a class="vignette" href="https://www.youtube.com/watch?v=HIpo3M81cfM" target="_blank">
+      <img src="https://img.youtube.com/vi/HIpo3M81cfM/hqdefault.jpg" alt="Le Paradoxe Numérique">
+      <div class="vignette-label">▶ Le Paradoxe Numérique — Cliquer pour ouvrir dans YouTube</div>
+    </a>
+    <button class="btn-valider" style="background:linear-gradient(135deg,#7C3AED,#A855F7);" onclick="debloquer(2)">✅ J'ai regardé → Étape suivante</button>
+  </div>
+</div>
+
+<!-- ETAPE 2 -->
+<div class="etape locked" id="e2">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#2563EB;">②</div>
+    <div class="etape-icon">📘</div>
+    <div><div class="etape-titre" style="color:#93C5FD;">Fiche Ressources – Partie 1 : Les processus</div><div class="etape-type">Fiche Ressources · Chapitre 9 · Partie 1</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="desc">Lis attentivement cette première partie.</p>
+    <button class="accordion-btn" onclick="toggle('a2')">📌 Les processus de gestion <span>▶</span></button>
+    <div class="accordion-content" id="a2">
+      <p>Un <strong>processus de gestion</strong> coordonne un ensemble d'activités réalisées par différents acteurs pour produire un résultat attendu.</p>
+      <p>• <strong>Processus métier</strong> : cœur de métier<br>• <strong>Processus support</strong> : services internes<br>• <strong>Événement déclencheur</strong> : initie le processus<br>• <strong>Événement résultat</strong> : clôture le processus<br>• <strong>Acteur interne</strong> : appartient à l'organisation<br>• <strong>Acteur externe</strong> : client, fournisseur…</p>
+      <p>La formalisation permet d'établir des <strong>diagrammes événement-résultat</strong>. L'automatisation a des effets <strong>ambivalents</strong> sur l'emploi.</p>
+    </div>
+    <button class="btn-valider" style="background:linear-gradient(135deg,#2563EB,#3B82F6);" onclick="debloquer(3)">✅ J'ai lu → Vidéo suivante</button>
+  </div>
+</div>
+
+<!-- ETAPE 3 -->
+<div class="etape locked" id="e3">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#0891B2;">③</div>
+    <div class="etape-icon">🎬</div>
+    <div><div class="etape-titre" style="color:#67E8F9;">Vidéo – Les processus de gestion</div><div class="etape-type">Vidéo · ~14 min · Prends des notes !</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="desc">Regarde cette vidéo (~14 min). Un quiz t'attend juste après !</p>
+    <a class="vignette" href="https://www.youtube.com/watch?v=BePzV3Wvme0&t=395s" target="_blank">
+      <img src="https://img.youtube.com/vi/BePzV3Wvme0/hqdefault.jpg" alt="Les processus de gestion">
+      <div class="vignette-label">▶ Les processus de gestion — Cliquer pour ouvrir</div>
+    </a>
+    <button class="btn-valider" style="background:linear-gradient(135deg,#0891B2,#06B6D4);" onclick="debloquer(4)">✅ J'ai regardé → Passer au quiz</button>
+  </div>
+</div>
+
+<!-- ETAPE 4 : QUIZ PROCESSUS -->
+<div class="etape locked" id="e4">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#D97706;">④</div>
+    <div class="etape-icon">📝</div>
+    <div><div class="etape-titre" style="color:#FCD34D;">Quiz – As-tu bien compris les processus ?</div><div class="etape-type">7 questions · Fiche ressources et vidéo</div></div>
+  </div>
+  <div class="etape-body">
+    <div class="quiz-info" id="qi_p">Question 1 / 7</div>
+    <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="qpb_p" style="width:14%"></div></div>
+    <div id="quiz_p"></div>
+    <div class="result" id="res_p">
+      <div style="font-size:2.5rem;" id="res_p_emoji"></div>
+      <div class="result-score" id="res_p_score"></div>
+      <div class="result-msg" id="res_p_msg"></div>
+      <button class="btn-valider" style="background:linear-gradient(135deg,#2563EB,#3B82F6);margin-top:1rem;" onclick="debloquer(5)">📘 Passer à la partie 2 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ETAPE 5 -->
+<div class="etape locked" id="e5">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#2563EB;">⑤</div>
+    <div class="etape-icon">📘</div>
+    <div><div class="etape-titre" style="color:#93C5FD;">Fiche Ressources – Partie 2 : Les outils numériques</div><div class="etape-type">Fiche Ressources · Chapitre 9 · Partie 2</div></div>
+  </div>
+  <div class="etape-body">
+    <button class="accordion-btn" onclick="toggle('a5a')">🔷 2A. Le PGI <span>▶</span></button>
+    <div class="accordion-content" id="a5a">
+      <p>Le <strong>PGI (Progiciel de Gestion Intégré)</strong> améliore la circulation de l'information. Mais son paramétrage complexe peut <strong>rigidifier</strong> l'organisation.</p>
+    </div>
+    <button class="accordion-btn" onclick="toggle('a5b')">☁️ 2B. Cloud & Agilité <span>▶</span></button>
+    <div class="accordion-content" id="a5b">
+      <p>Le <strong>cloud computing</strong> favorise mobilité et télétravail. L'<strong>IA</strong> automatise les tâches répétitives pour concentrer les humains sur les tâches à valeur ajoutée.</p>
+    </div>
+    <button class="btn-valider" style="background:linear-gradient(135deg,#0891B2,#06B6D4);" onclick="debloquer(6)">✅ J'ai lu → Vidéo PGI</button>
+  </div>
+</div>
+
+<!-- ETAPE 6 -->
+<div class="etape locked" id="e6">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#0891B2;">⑥</div>
+    <div class="etape-icon">🖥️</div>
+    <div><div class="etape-titre" style="color:#67E8F9;">Comprendre le PGI en vidéo</div><div class="etape-type">Vidéo · Notions clés du PGI</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="desc">Regarde cette vidéo sur le PGI. Prends des notes ! Un quiz t'attend après. 👀</p>
+    <a class="vignette" href="https://www.youtube.com/watch?v=jtyFZzgZ5Yo" target="_blank">
+      <img src="https://img.youtube.com/vi/jtyFZzgZ5Yo/hqdefault.jpg" alt="Le PGI">
+      <div class="vignette-label">▶ Le PGI — Cliquer pour ouvrir</div>
+    </a>
+    <button class="btn-valider" style="background:linear-gradient(135deg,#0891B2,#06B6D4);" onclick="debloquer(7)">✅ J'ai regardé → Quiz PGI</button>
+  </div>
+</div>
+
+<!-- ETAPE 7 : QUIZ PGI -->
+<div class="etape locked" id="e7">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#D97706;">⑦</div>
+    <div class="etape-icon">❓</div>
+    <div><div class="etape-titre" style="color:#FCD34D;">Quiz – As-tu bien compris le PGI ?</div><div class="etape-type">7 questions · Basé sur la vidéo</div></div>
+  </div>
+  <div class="etape-body">
+    <div class="quiz-info" id="qi_pgi">Question 1 / 7</div>
+    <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="qpb_pgi" style="width:14%"></div></div>
+    <div id="quiz_pgi"></div>
+    <div class="result" id="res_pgi">
+      <div style="font-size:2.5rem;" id="res_pgi_emoji"></div>
+      <div class="result-score" id="res_pgi_score"></div>
+      <div class="result-msg" id="res_pgi_msg"></div>
+      <button class="btn-valider" style="background:linear-gradient(135deg,#059669,#10B981);margin-top:1rem;" onclick="debloquer(8)">🎯 Passer au QCM final →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ETAPE 8 : QCM FINAL -->
+<div class="etape locked" id="e8">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#059669;">⑧</div>
+    <div class="etape-icon">🎯</div>
+    <div><div class="etape-titre" style="color:#6EE7B7;">QCM Final – Valide tes acquis !</div><div class="etape-type">10 questions · Toute la séquence</div></div>
+  </div>
+  <div class="etape-body">
+    <p class="desc">Choisis ton option selon que tu as un compte Google ou non.</p>
+    <div class="choix-box" id="choix8">
+      <div class="choix-card" style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);">
+        <div class="choix-icon">🎯</div>
+        <div class="choix-titre" style="color:#6EE7B7;">QCM intégré</div>
+        <div class="choix-desc">Sans compte Google</div>
+        <button class="btn-choix" style="background:linear-gradient(135deg,#059669,#10B981);" onclick="lancerQCMFinal()">✅ Choisir</button>
+      </div>
+      <div class="choix-card" style="background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.3);">
+        <div class="choix-icon">🔗</div>
+        <div class="choix-titre" style="color:#93C5FD;">NotebookLM</div>
+        <div class="choix-desc">Avec compte Google</div>
+        <a class="btn-choix" style="background:linear-gradient(135deg,#1D4ED8,#2563EB);" href="https://notebooklm.google.com/notebook/3e86a30b-b1fa-46f7-bfe2-7a597812ce96/artifact/4b07ecb2-1fce-4ff1-9bd9-637615ebc63a" target="_blank">🔗 Accéder</a>
+      </div>
+    </div>
+    <div id="qcm_final_zone" style="display:none;">
+      <div class="quiz-info" id="qi_f">Question 1 / 10</div>
+      <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="qpb_f" style="width:10%"></div></div>
+      <div id="quiz_f"></div>
+      <div class="result" id="res_f">
+        <div style="font-size:2.5rem;" id="res_f_emoji"></div>
+        <div class="result-score" id="res_f_score"></div>
+        <div class="result-msg" id="res_f_msg"></div>
+        <button class="btn-valider" style="background:linear-gradient(135deg,#7C3AED,#A855F7);margin-top:1rem;" onclick="debloquer(9)">🎓 Conclusion →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ETAPE 9 : CONCLUSION -->
+<div class="etape locked" id="e9">
+  <div class="etape-header">
+    <div class="etape-num" style="background:#7C3AED;">⑨</div>
+    <div class="etape-icon">🎓</div>
+    <div><div class="etape-titre" style="color:#C4B5FD;">Conclusion collégiale</div><div class="etape-type">Fiche de synthèse · Moment collectif</div></div>
+  </div>
+  <div class="etape-body">
+    <div class="alerte">
+      <div style="font-size:1.8rem;">🔴</div>
+      <div><div style="color:#FCA5A5;font-weight:700;font-size:.85rem;">Moment collectif — Ne pas consulter seul·e !</div><div style="color:#94A3B8;font-size:.78rem;margin-top:.2rem;">Attends les consignes de ton professeur. 🎤</div></div>
+    </div>
+    <div class="conclusion-box">
+      <div style="font-size:1rem;font-weight:800;color:#C4B5FD;margin-bottom:.4rem;">La réponse : les deux à la fois !</div>
+      <div style="font-size:.83rem;color:#DDD6FE;line-height:1.5;">Le numérique est paradoxal — il crée de l'agilité globale mais peut engendrer de la rigidité locale selon les choix organisationnels.</div>
+    </div>
+    <div class="col2">
+      <div class="col-box" style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);">
+        <div style="font-size:.8rem;font-weight:700;color:#6EE7B7;margin-bottom:.75rem;text-align:center;">✅ Sources d'AGILITÉ</div>
+        <div class="col-box-item" style="background:rgba(16,185,129,.1);"><div style="font-size:.78rem;font-weight:700;color:#6EE7B7;">☁️ Cloud computing</div></div>
+        <div class="col-box-item" style="background:rgba(16,185,129,.1);"><div style="font-size:.78rem;font-weight:700;color:#6EE7B7;">💻 Télétravail & mobilité</div></div>
+        <div class="col-box-item" style="background:rgba(16,185,129,.1);"><div style="font-size:.78rem;font-weight:700;color:#6EE7B7;">⚙️ Applications métier</div></div>
+        <div class="col-box-item" style="background:rgba(16,185,129,.1);"><div style="font-size:.78rem;font-weight:700;color:#6EE7B7;">🤖 Intelligence artificielle</div></div>
+      </div>
+      <div class="col-box" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);">
+        <div style="font-size:.8rem;font-weight:700;color:#FCA5A5;margin-bottom:.75rem;text-align:center;">⚠️ Sources de RIGIDITÉ</div>
+        <div class="col-box-item" style="background:rgba(239,68,68,.1);"><div style="font-size:.78rem;font-weight:700;color:#FCA5A5;">🔧 PGI / ERP</div></div>
+        <div class="col-box-item" style="background:rgba(239,68,68,.1);"><div style="font-size:.78rem;font-weight:700;color:#FCA5A5;">📋 Standardisation forcée</div></div>
+        <div class="col-box-item" style="background:rgba(239,68,68,.1);"><div style="font-size:.78rem;font-weight:700;color:#FCA5A5;">🔌 Dépendance technique</div></div>
+        <div class="col-box-item" style="background:rgba(239,68,68,.1);"><div style="font-size:.78rem;font-weight:700;color:#FCA5A5;">🚧 Résistance au changement</div></div>
+      </div>
+    </div>
+    <div style="background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);border-radius:12px;padding:1rem;text-align:center;">
+      <div style="font-size:.85rem;font-weight:700;color:#C4B5FD;">🎓 Félicitations ! Tu as complété le parcours SGN · Chapitre 9</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer><strong style="color:#3B82F6;">SGN · 1ère STMG</strong> &nbsp;|&nbsp; Thème 2 : Numérique et intelligence collective &nbsp;|&nbsp; Chapitre 9</footer>
+
+<script>
+var QP=[
+  {q:"Qu'est-ce qu'un processus de gestion ?",opts:["Un logiciel de comptabilité","Un ensemble coordonné d'activités pour produire un résultat","Une réunion de direction","Un tableau de bord"],rep:1,ok:"Exact ! Un processus coordonne des activités pour produire un résultat attendu.",ko:"Un processus coordonne des activités réalisées par différents acteurs pour produire un résultat."},
+  {q:"Qu'est-ce qu'un événement déclencheur ?",opts:["Ce qui clôture le processus","Un acteur interne","Ce qui initie et lance le processus","Un outil numérique"],rep:2,ok:"Exact ! L'événement déclencheur initie et lance le processus.",ko:"L'événement déclencheur est ce qui initie et lance le processus."},
+  {q:"Qu'est-ce qu'un événement résultat ?",opts:["Ce qui lance le processus","Un acteur externe","Un logiciel","Ce qui clôture le processus et produit le résultat final"],rep:3,ok:"Parfait ! L'événement résultat clôture le processus.",ko:"L'événement résultat clôture le processus et produit le résultat final."},
+  {q:"L'acteur interne est...",opts:["Un client","Un fournisseur","Un salarié ou service de l'organisation","Un prestataire externe"],rep:2,ok:"Exact ! L'acteur interne appartient à l'organisation.",ko:"L'acteur interne appartient à l'organisation (salarié, service...)."},
+  {q:"À quoi sert un diagramme événement-résultat ?",opts:["Calculer les bénéfices","Gérer les stocks","Schématiser l'enchaînement des étapes d'un processus","Organiser les réunions"],rep:2,ok:"Bravo ! Il schématise l'enchaînement des étapes.",ko:"Le diagramme événement-résultat schématise l'enchaînement des étapes d'un processus."},
+  {q:"Différence processus métier / support ?",opts:["Identiques","Métier = cœur de métier, Support = services internes","Métier = RH, Support = production","Métier réservé aux grandes entreprises"],rep:1,ok:"Parfait ! Métier = cœur de métier, Support = services internes.",ko:"Processus métier = cœur de métier. Processus support = services internes."},
+  {q:"Effets de l'automatisation sur l'emploi ?",opts:["Supprime tous les emplois","Aucun impact","Crée uniquement de nouveaux emplois","Ambivalents : menace certains, crée de nouveaux métiers"],rep:3,ok:"Exact ! Les effets sont ambivalents.",ko:"Les effets sont ambivalents : certains emplois menacés mais de nouveaux apparaissent."}
+];
+
+var QPGI=[
+  {q:"Que signifie PGI ?",opts:["Plateforme de Gestion Informatisée","Progiciel de Gestion Intégré","Processus de Gestion Intelligente","Programme de Gestion Intégrée"],rep:1,ok:"Bravo ! PGI = Progiciel de Gestion Intégré.",ko:"PGI signifie Progiciel de Gestion Intégré."},
+  {q:"Rôle principal du PGI ?",opts:["Gérer la paie","Faire la comptabilité","Centraliser processus et données dans une solution unique","Gérer la communication"],rep:2,ok:"Exact ! Le PGI centralise tout dans une solution unique.",ko:"Le PGI centralise l'ensemble des processus et données."},
+  {q:"Chaque fonctionnalité du PGI s'appelle ?",opts:["Un plugin","Un module","Un widget","Un serveur"],rep:1,ok:"Parfait ! Un module.",ko:"Dans un PGI, chaque fonctionnalité s'appelle un module."},
+  {q:"Caractéristique de la base de données du PGI ?",opts:["Différente pour chaque service","Accessible à la direction uniquement","Unique, centralisée, mise à jour en temps réel","Mise à jour manuellement"],rep:2,ok:"Exactement ! Unique, centralisée, temps réel.",ko:"La base de données PGI est unique, centralisée et mise à jour en temps réel."},
+  {q:"Le PGI peut-il rigidifier l'organisation ?",opts:["Non","Oui, son paramétrage complexe peut rigidifier","Non, neutre"],rep:1,ok:"Exact ! C'est le paradoxe du PGI.",ko:"Le PGI peut rigidifier via son paramétrage complexe."},
+  {q:"Événement déclencheur ?",opts:["Ce qui clôture","Ce qui initie et lance le processus","Un acteur interne","Un outil numérique"],rep:1,ok:"Exact ! Il initie et lance le processus.",ko:"L'événement déclencheur initie et lance le processus."},
+  {q:"Acteur interne vs externe ?",opts:["Interne = client, Externe = salarié","Identiques","Interne appartient à l'organisation, Externe est en dehors","Interne = comptabilité, Externe = logistique"],rep:2,ok:"Parfait !",ko:"Interne = appartient à l'organisation. Externe = dehors (client, fournisseur...)."}
+];
+
+var QF=[
+  {q:"Le numérique crée-t-il uniquement de l'agilité ?",opts:["Oui, toujours","Non, les deux selon les outils","Non, uniquement de la rigidité","Aucun impact"],rep:1,ok:"Exact ! Les deux à la fois.",ko:"Le numérique crée à la fois agilité et rigidité."},
+  {q:"Qu'est-ce qu'un processus de gestion ?",opts:["Un logiciel RH","Un ensemble coordonné d'activités pour produire un résultat","Une réunion","Un tableau de bord"],rep:1,ok:"Parfait !",ko:"Un processus coordonne des activités pour produire un résultat."},
+  {q:"Événement déclencheur ?",opts:["Ce qui clôture","Ce qui initie et lance","Un acteur interne","Un outil"],rep:1,ok:"Exact !",ko:"L'événement déclencheur initie et lance le processus."},
+  {q:"Acteur interne ?",opts:["Un client","Un fournisseur","Appartient à l'organisation","En dehors de l'organisation"],rep:2,ok:"Parfait !",ko:"L'acteur interne appartient à l'organisation."},
+  {q:"PGI signifie ?",opts:["Plateforme de Gestion Informatisée","Progiciel de Gestion Intégré","Processus de Gestion Intelligente","Programme de Gestion Intégrée"],rep:1,ok:"Bravo !",ko:"PGI = Progiciel de Gestion Intégré."},
+  {q:"Rôle principal du PGI ?",opts:["Gérer la paie","Faire la comptabilité","Centraliser processus et données","Gérer la communication"],rep:2,ok:"Exact !",ko:"Le PGI centralise processus et données."},
+  {q:"PGI source de rigidité ?",opts:["Non","Oui, paramétrage complexe peut rigidifier","Non, neutre"],rep:1,ok:"Exact !",ko:"Le PGI peut rigidifier via son paramétrage."},
+  {q:"Outil favorisant télétravail et mobilité ?",opts:["PGI","Cloud computing","Diagramme ER","Base de données locale"],rep:1,ok:"Parfait ! Le cloud computing.",ko:"Le cloud computing favorise mobilité et télétravail."},
+  {q:"Impact de l'IA ?",opts:["Supprime tous les emplois","Aucun impact","Automatise certaines tâches, libère les humains","Remplace les SI"],rep:2,ok:"Exact !",ko:"L'IA automatise et libère les humains pour les tâches à valeur ajoutée."},
+  {q:"Conclusion sur le numérique ?",opts:["Uniquement agilité","Uniquement rigidité","Paradoxal : agilité globale mais rigidité locale possible","Aucun effet"],rep:2,ok:"Parfait ! C'est le paradoxe du numérique.",ko:"Le numérique est paradoxal : agilité globale mais rigidité locale possible."}
+];
+
+var scores={p:0,pgi:0,f:0};
+var current={p:0,pgi:0,f:0};
+var answered={p:{},pgi:{},f:{}};
+
+function toggle(id){
+  var el=document.getElementById(id);
+  el.style.display=el.style.display==='none'||el.style.display===''?'block':'none';
+}
+
+function debloquer(n){
+  var next=document.getElementById('e'+n);
+  if(next){
+    next.classList.remove('locked');
+    setTimeout(function(){next.scrollIntoView({behavior:'smooth',block:'start'});},300);
+  }
+}
+
+function lancerQCMFinal(){
+  document.getElementById('choix8').style.display='none';
+  document.getElementById('qcm_final_zone').style.display='block';
+  afficherQ('f');
+}
+
+function afficherQ(type){
+  var Q=type==='p'?QP:type==='pgi'?QPGI:QF;
+  var idx=current[type];
+  var total=Q.length;
+  if(idx>=total){return;}
+  var q=Q[idx];
+  var html='<div class="q-texte">'+q.q+'</div><div class="q-options">';
+  for(var i=0;i<q.opts.length;i++){
+    var done=answered[type][idx]!==undefined;
+    var correct=i===q.rep;
+    var chose=answered[type][idx]===i;
+    var cls='q-opt'+(done&&correct?' ok':done&&chose&&!correct?' ko':'');
+    var dis=done?'disabled':'';
+    html+='<button class="'+cls+'" '+dis+' onclick="repondre(\''+type+'\','+i+')">'+q.opts[i]+'</button>';
+  }
+  html+='</div>';
+  if(answered[type][idx]!==undefined){
+    var correct2=answered[type][idx]===q.rep;
+    html+='<div class="feedback show '+(correct2?'ok':'ko')+'">'+(correct2?'✅ '+q.ok:'❌ '+q.ko)+'</div>';
+    html+='<button class="btn-suivant show" onclick="suivant(\''+type+'\')">'+(idx+1<total?'Question suivante →':'Voir mon résultat 🎉')+'</button>';
+  }
+  document.getElementById('quiz_'+type).innerHTML=html;
+  document.getElementById('qi_'+type)='Question '+(idx+1)+' / '+total;
+  document.getElementById('qpb_'+type).style.width=((idx+1)/total*100)+'%';
+  var infoEl=document.getElementById('qi_'+type);
+  if(infoEl) infoEl.textContent='Question '+(idx+1)+' / '+total;
+}
+
+function repondre(type,idx){
+  var Q=type==='p'?QP:type==='pgi'?QPGI:QF;
+  var cur=current[type];
+  if(answered[type][cur]!==undefined) return;
+  answered[type][cur]=idx;
+  if(idx===Q[cur].rep) scores[type]++;
+  afficherQ(type);
+}
+
+function suivant(type){
+  var Q=type==='p'?QP:type==='pgi'?QPGI:QF;
+  current[type]++;
+  if(current[type]>=Q.length){
+    document.getElementById('quiz_'+type).innerHTML='';
+    var res=document.getElementById('res_'+type);
+    res.classList.add('show');
+    var s=scores[type];
+    var tot=Q.length;
+    document.getElementById('res_'+type+'_score').textContent=s+' / '+tot;
+    document.getElementById('res_'+type+'_emoji').textContent=s===tot?'🏆':s>=Math.ceil(tot*0.7)?'👍':'💪';
+    document.getElementById('res_'+type+'_msg').textContent=s===tot?'Parfait ! Tu maitrises tout !':s>=Math.ceil(tot*0.7)?'Bien joué ! Passe à la suite.':'Revois tes notes et recommence.';
+  } else {
+    afficherQ(type);
+  }
+}
+
+afficherQ('p');
+afficherQ('pgi');
+afficherQ('f');
+</script>
+</body>
+</html>
 
